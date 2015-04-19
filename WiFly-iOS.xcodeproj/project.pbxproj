@@ -15,6 +15,9 @@
 		31A91A3B1AE3E7DC007D0669 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31A91A3A1AE3E7DC007D0669 /* Images.xcassets */; };
 		31A91A3E1AE3E7DC007D0669 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31A91A3C1AE3E7DC007D0669 /* LaunchScreen.xib */; };
 		31A91A4A1AE3E7DC007D0669 /* WiFly_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 31A91A491AE3E7DC007D0669 /* WiFly_iOSTests.m */; };
+		31ECF0D91AE3ED1E00BE2AE1 /* ServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 31ECF0D81AE3ED1E00BE2AE1 /* ServerManager.m */; };
+		31ECF0DD1AE3FB7F00BE2AE1 /* WiFly-icon-transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = 31ECF0DB1AE3FB7F00BE2AE1 /* WiFly-icon-transparent.png */; };
+		31ECF0DE1AE3FB7F00BE2AE1 /* WiFly-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 31ECF0DC1AE3FB7F00BE2AE1 /* WiFly-icon.png */; };
 		8ABC14D1B044960553345B0F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 823E95D2E5822699C7F71098 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +47,10 @@
 		31A91A431AE3E7DC007D0669 /* WiFly-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WiFly-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		31A91A481AE3E7DC007D0669 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31A91A491AE3E7DC007D0669 /* WiFly_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WiFly_iOSTests.m; sourceTree = "<group>"; };
+		31ECF0D71AE3ED1E00BE2AE1 /* ServerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerManager.h; sourceTree = "<group>"; };
+		31ECF0D81AE3ED1E00BE2AE1 /* ServerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerManager.m; sourceTree = "<group>"; };
+		31ECF0DB1AE3FB7F00BE2AE1 /* WiFly-icon-transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WiFly-icon-transparent.png"; sourceTree = "<group>"; };
+		31ECF0DC1AE3FB7F00BE2AE1 /* WiFly-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WiFly-icon.png"; sourceTree = "<group>"; };
 		632D43CE01B6E88F83975528 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		6732B6005DDC89BCB84B75D5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		823E95D2E5822699C7F71098 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,8 +107,11 @@
 		31A91A291AE3E7DC007D0669 /* WiFly-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				31ECF0DA1AE3FB6C00BE2AE1 /* images */,
 				31A91A2E1AE3E7DC007D0669 /* AppDelegate.h */,
 				31A91A2F1AE3E7DC007D0669 /* AppDelegate.m */,
+				31ECF0D71AE3ED1E00BE2AE1 /* ServerManager.h */,
+				31ECF0D81AE3ED1E00BE2AE1 /* ServerManager.m */,
 				31A91A311AE3E7DC007D0669 /* FirstViewController.h */,
 				31A91A321AE3E7DC007D0669 /* FirstViewController.m */,
 				31A91A341AE3E7DC007D0669 /* SecondViewController.h */,
@@ -138,6 +148,15 @@
 				31A91A481AE3E7DC007D0669 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		31ECF0DA1AE3FB6C00BE2AE1 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				31ECF0DB1AE3FB7F00BE2AE1 /* WiFly-icon-transparent.png */,
+				31ECF0DC1AE3FB7F00BE2AE1 /* WiFly-icon.png */,
+			);
+			name = images;
 			sourceTree = "<group>";
 		};
 		3652BF0024531060C30DA1DB /* Frameworks */ = {
@@ -231,8 +250,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				31A91A391AE3E7DC007D0669 /* Main.storyboard in Resources */,
+				31ECF0DD1AE3FB7F00BE2AE1 /* WiFly-icon-transparent.png in Resources */,
 				31A91A3E1AE3E7DC007D0669 /* LaunchScreen.xib in Resources */,
 				31A91A3B1AE3E7DC007D0669 /* Images.xcassets in Resources */,
+				31ECF0DE1AE3FB7F00BE2AE1 /* WiFly-icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +304,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31ECF0D91AE3ED1E00BE2AE1 /* ServerManager.m in Sources */,
 				31A91A361AE3E7DC007D0669 /* SecondViewController.m in Sources */,
 				31A91A301AE3E7DC007D0669 /* AppDelegate.m in Sources */,
 				31A91A331AE3E7DC007D0669 /* FirstViewController.m in Sources */,

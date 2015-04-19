@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FirstViewController : UIViewController
+#import "ServerManager.h"
+
+@interface FirstViewController : UIViewController <UIAlertViewDelegate>
 
 
 @end
