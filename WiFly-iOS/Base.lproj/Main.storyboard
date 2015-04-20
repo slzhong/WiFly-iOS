@@ -2,9 +2,10 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Jyr-fx-x4c">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--First View Controller-->
+        <!--Devices-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="FirstViewController" sceneMemberID="viewController">
@@ -17,13 +18,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="search" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Devices" image="device.png" id="acW-dT-cKf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="750" y="-320"/>
         </scene>
-        <!--Second View Controller-->
+        <!--Files-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="SecondViewController" sceneMemberID="viewController">
@@ -36,7 +37,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="recents" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Files" image="download.png" id="cPa-gy-q4n"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -57,12 +58,53 @@
                         </textAttributes>
                     </navigationBar>
                     <connections>
-                        <segue destination="49e-Tb-3d3" kind="relationship" relationship="rootViewController" id="95j-ho-BGq"/>
+                        <segue destination="iyJ-H1-pd0" kind="relationship" relationship="rootViewController" id="8P0-sn-8O7"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8he-9Y-AKy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1252" y="-1022"/>
+        </scene>
+        <!--WiFly-->
+        <scene sceneID="UVX-jK-F2V">
+            <objects>
+                <viewController id="iyJ-H1-pd0" customClass="DevicesViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Qdb-U8-1dA"/>
+                        <viewControllerLayoutGuide type="bottom" id="L8d-wn-uo0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="56z-RS-LOq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="DjK-Bn-ugR">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="DjK-Bn-ugR" secondAttribute="bottom" id="CoH-CB-9Qg"/>
+                            <constraint firstItem="DjK-Bn-ugR" firstAttribute="leading" secondItem="56z-RS-LOq" secondAttribute="leading" id="FO7-5f-44v"/>
+                            <constraint firstItem="DjK-Bn-ugR" firstAttribute="top" secondItem="Qdb-U8-1dA" secondAttribute="bottom" id="c39-Uq-wyD"/>
+                            <constraint firstAttribute="trailing" secondItem="DjK-Bn-ugR" secondAttribute="trailing" id="cyU-2s-9LE"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="WiFly" id="1P4-cH-UJj">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="8Hx-xa-li8">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="iHZ-OQ-uIX">
+                                <rect key="frame" x="233" y="7" width="25" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="download.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tx0-Ef-Q1l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-268" y="-888"/>
         </scene>
         <!--WiFly-->
         <scene sceneID="yl2-sM-qoP">
@@ -74,7 +116,6 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.19215686274509802" green="0.78431372549019607" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
@@ -87,4 +128,8 @@
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="device.png" width="512" height="512"/>
+        <image name="download.png" width="25" height="25"/>
+    </resources>
 </document>

@@ -33,7 +33,7 @@
 }
 
 - (void) initViews {
-    
+        
 }
 
 - (BOOL)checkId {

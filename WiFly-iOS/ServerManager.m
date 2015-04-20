@@ -35,6 +35,7 @@ static ServerManager *serverManager = nil;
         NSMutableDictionary *info = [NSMutableDictionary dictionary];
         [info setValue:sm.name forKey:@"name"];
         [info setValue:sm.url forKey:@"url"];
+        [info setValue:@"ios" forKey:@"device"];
         return [GCDWebServerDataResponse responseWithJSONObject:info];
     }];
 }
