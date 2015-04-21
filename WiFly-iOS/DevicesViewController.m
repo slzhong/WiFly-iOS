@@ -52,9 +52,11 @@
 
 - (void) initData {
     self.devices = [NSMutableArray array];
-    self.current = 0;
+    self.current = 1;
+    self.scanned = 0;
     self.ip = @"";
     self.ipPrefix = @"";
+    self.progressDisplayed = NO;
 }
 
 - (BOOL)checkId {
@@ -91,7 +93,9 @@
     if (self.devices.count <= 0) {
         [self showProgressWithText:@"Searching For Devices..."];
     }
-    [self searchIp:[NSString stringWithFormat:@"%@%d", self.ipPrefix, self.current]];
+    for (int i = 0; i < 10; i++) {
+        [self searchIp:[NSString stringWithFormat:@"%@%d", self.ipPrefix, self.current + i]];
+    }
 }
 
 - (void)searchIp:(NSString *)ip {
@@ -116,10 +120,17 @@
 }
 
 - (void)searchNext {
-    if (++self.current >= 255) {
-        self.current = 1;
+    if (++self.scanned < 10) {
+        return;
+    } else {
+        self.scanned = 0;
+        self.current = (self.current > 250) ? 1 : self.current + 10;
+        [self searchDevice];
     }
-    [self searchIp:[NSString stringWithFormat:@"%@%d", self.ipPrefix, self.current]];
+//    if (++self.current >= 255) {
+//        self.current = 1;
+//    }
+//    [self searchIp:[NSString stringWithFormat:@"%@%d", self.ipPrefix, self.current]];
 }
 
 - (void)addDevice:(NSDictionary *)device {
@@ -143,11 +154,17 @@
 }
 
 - (void)showProgressWithText:(NSString *)text {
-    [SVProgressHUD showWithStatus:text maskType:SVProgressHUDMaskTypeClear];
+    if (!self.progressDisplayed) {
+        [SVProgressHUD showWithStatus:text maskType:SVProgressHUDMaskTypeClear];
+        self.progressDisplayed = YES;
+    }
 }
 
 - (void)dismissProgress {
-    [SVProgressHUD dismiss];
+    if (self.progressDisplayed) {
+        [SVProgressHUD dismiss];
+        self.progressDisplayed = NO;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

@@ -21,6 +21,10 @@
 @property (strong, nonatomic) NSMutableArray *devices;
 @property (strong, nonatomic) NSString *ip;
 @property (strong, nonatomic) NSString *ipPrefix;
+
+@property int scanned;
 @property int current;
+
+@property BOOL progressDisplayed;
 
 @end
