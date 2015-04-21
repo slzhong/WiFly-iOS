@@ -75,6 +75,19 @@
     [self startServer];
 }
 
+- (NSString *)getSsid {
+    NSString *result = @"";
+    CFArrayRef interfaces = CNCopySupportedInterfaces();
+    if (interfaces != nil) {
+        CFDictionaryRef info = CNCopyCurrentNetworkInfo(CFArrayGetValueAtIndex(interfaces, 0));
+        if (info != nil) {
+            NSDictionary *dict = (NSDictionary *)CFBridgingRelease(info);
+            result = [dict valueForKey:@"SSID"];
+        }
+    }
+    return result;
+}
+
 - (void)startServer {
     ServerManager *sm = [ServerManager sharedInstance];
     [sm start];
@@ -91,7 +104,12 @@
 
 - (void)searchDevice {
     if (self.devices.count <= 0) {
-        [self showProgressWithText:@"Searching For Devices..."];
+        NSString *hint = @"Searching For Devices...";
+        NSString *ssid = [self getSsid];
+        if (ssid.length > 0) {
+            hint = [NSString stringWithFormat:@"%@\n\nCurrent WiFi:\n %@", hint, ssid];
+        }
+        [self showProgressWithText:hint];
     }
     for (int i = 0; i < 10; i++) {
         [self searchIp:[NSString stringWithFormat:@"%@%d", self.ipPrefix, self.current + i]];

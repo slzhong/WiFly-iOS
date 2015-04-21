@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <SystemConfiguration/CaptiveNetwork.h>
 
 #import "SVProgressHUD.h"
 #import "AFHTTPRequestOperationManager.h"
