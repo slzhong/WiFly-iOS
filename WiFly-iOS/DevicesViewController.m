@@ -27,14 +27,14 @@
         [self showPrompt];
     }
     
-    for (int i = 0; i < 10; i++) {
-        NSMutableDictionary *device = [NSMutableDictionary dictionary];
-        [device setValue:@"mac" forKey:@"type"];
-        [device setValue:[NSString stringWithFormat:@"mac%d", i] forKey:@"name"];
-        [device setValue:[NSString stringWithFormat:@"0.0.0.%d", i] forKey:@"ip"];
-        [self.devices addObject:device];
-    }
-    [self.tv_devices reloadData];
+//    for (int i = 0; i < 10; i++) {
+//        NSMutableDictionary *device = [NSMutableDictionary dictionary];
+//        [device setValue:@"mac" forKey:@"type"];
+//        [device setValue:[NSString stringWithFormat:@"mac%d", i] forKey:@"name"];
+//        [device setValue:[NSString stringWithFormat:@"0.0.0.%d", i] forKey:@"ip"];
+//        [self.devices addObject:device];
+//    }
+//    [self.tv_devices reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,11 +48,13 @@
     
     self.tv_devices.delegate = self;
     self.tv_devices.dataSource = self;
-//    self.tv_devices.contentInset = UIEdgeInsetsMake(-64, 0, 0, 0);
 }
 
 - (void) initData {
     self.devices = [NSMutableArray array];
+    self.current = 0;
+    self.ip = @"";
+    self.ipPrefix = @"";
 }
 
 - (BOOL)checkId {
@@ -74,16 +76,58 @@
 - (void)startServer {
     ServerManager *sm = [ServerManager sharedInstance];
     [sm start];
-    
     NSString *name = [[NSUserDefaults standardUserDefaults] valueForKey:@"name"];
     NSString *url = sm.server.serverURL.absoluteString;
     [sm setInfo:name url:url];
-    
+    self.ip = [url substringWithRange:NSMakeRange(7, [url rangeOfString:@":12580"].location - 7)];
+    NSArray *components = [self.ip componentsSeparatedByString:@"."];
+    for (int i = 0; i < components.count - 1; i++) {
+        self.ipPrefix = [NSString stringWithFormat:@"%@%@.", self.ipPrefix,components[i]];
+    }
     [self searchDevice];
 }
 
 - (void)searchDevice {
-//    [self showProgressWithText:@"Searching For Devices..."];
+    if (self.devices.count <= 0) {
+        [self showProgressWithText:@"Searching For Devices..."];
+    }
+    [self searchIp:[NSString stringWithFormat:@"%@%d", self.ipPrefix, self.current]];
+}
+
+- (void)searchIp:(NSString *)ip {
+    if (![ip isEqualToString:self.ip]) {
+        NSString *url = [NSString stringWithFormat:@"http://%@:12580/id", ip];
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        manager.responseSerializer = [AFJSONResponseSerializer serializer];
+        manager.requestSerializer=[AFJSONRequestSerializer serializer];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
+        [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+        manager.requestSerializer.timeoutInterval = 1.f;
+        [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+        [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [self addDevice:responseObject];
+            [self searchNext];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [self searchNext];
+        }];
+    } else {
+        [self searchNext];
+    }
+}
+
+- (void)searchNext {
+    if (++self.current >= 255) {
+        self.current = 1;
+    }
+    [self searchIp:[NSString stringWithFormat:@"%@%d", self.ipPrefix, self.current]];
+}
+
+- (void)addDevice:(NSDictionary *)device {
+    if (self.devices.count == 0) {
+        [self dismissProgress];
+    }
+    [self.devices addObject:device];
+    [self.tv_devices reloadData];
 }
 
 - (void)showSuccessWithText:(NSString *)text {
@@ -111,28 +155,13 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    ContactParentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ContactParentTableViewCell"];
-//    if (cell == nil) {
-//        cell = [[[NSBundle mainBundle] loadNibNamed:@"ContactParentTableViewCell" owner:self options:nil]lastObject];
-//    }
-//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    ContactEntity *ce = self.sbResult[row];
-//    NSString *subTitle;
-//    if([ce.type isEqualToString:@"1"]) {
-//        subTitle = [NSString stringWithFormat:@"%@的%@",ce.dsc,ce.role];
-//    } else {
-//        subTitle = [NSString stringWithFormat:@"%@老师",ce.dsc];
-//    }
-//    [cell setAvatar:ce.avatar_url name:ce.name dsc:subTitle];
-//    return cell;
-
     DeviceTableViewCell *cell = [self.tv_devices dequeueReusableCellWithIdentifier:@"DeviceTableViewCell"];
     if (cell == nil) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"DeviceTableViewCell" owner:self options:nil] lastObject];
     }
-//    [cell setViews:@"mac.png" name:@"mac" ip:@"0.0.0.0"];
     NSMutableDictionary *device = [self.devices objectAtIndex:indexPath.row];
-    [cell setViews:[NSString stringWithFormat:@"%@.png", [device valueForKey:@"type"]] name:[device valueForKey:@"name"] ip:[device valueForKey:@"ip"]];
+    NSString *ip = [[device valueForKey:@"url"] substringWithRange:NSMakeRange(7, [[device valueForKey:@"url"] rangeOfString:@":12580"].location - 7)];
+    [cell setViews:[NSString stringWithFormat:@"%@.png", [device valueForKey:@"type"]] name:[device valueForKey:@"name"] ip:ip];
     return cell;
 }
 

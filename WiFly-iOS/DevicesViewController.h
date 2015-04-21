@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 #import "SVProgressHUD.h"
+#import "AFHTTPRequestOperationManager.h"
+
 #import "ServerManager.h"
 #import "DeviceTableViewCell.h"
 
@@ -17,5 +19,8 @@
 @property (strong, nonatomic) IBOutlet UITableView *tv_devices;
 
 @property (strong, nonatomic) NSMutableArray *devices;
+@property (strong, nonatomic) NSString *ip;
+@property (strong, nonatomic) NSString *ipPrefix;
+@property int current;
 
 @end
