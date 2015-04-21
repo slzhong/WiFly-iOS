@@ -26,15 +26,6 @@
     } else {
         [self showPrompt];
     }
-    
-//    for (int i = 0; i < 10; i++) {
-//        NSMutableDictionary *device = [NSMutableDictionary dictionary];
-//        [device setValue:@"mac" forKey:@"type"];
-//        [device setValue:[NSString stringWithFormat:@"mac%d", i] forKey:@"name"];
-//        [device setValue:[NSString stringWithFormat:@"0.0.0.%d", i] forKey:@"ip"];
-//        [self.devices addObject:device];
-//    }
-//    [self.tv_devices reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,6 +45,7 @@
     self.devices = [NSMutableArray array];
     self.current = 1;
     self.scanned = 0;
+    self.addedIps = @"";
     self.ip = @"";
     self.ipPrefix = @"";
     self.progressDisplayed = NO;
@@ -127,9 +119,10 @@
         manager.requestSerializer.timeoutInterval = 1.f;
         [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
         [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            [self addDevice:responseObject];
+            [self checkDevice:responseObject];
             [self searchNext];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [self removeDevice:ip];
             [self searchNext];
         }];
     } else {
@@ -145,10 +138,13 @@
         self.current = (self.current > 250) ? 1 : self.current + 10;
         [self searchDevice];
     }
-//    if (++self.current >= 255) {
-//        self.current = 1;
-//    }
-//    [self searchIp:[NSString stringWithFormat:@"%@%d", self.ipPrefix, self.current]];
+}
+
+- (void)checkDevice:(NSDictionary *)device {
+    if (![self.addedIps containsString:[device valueForKey:@"url"]]) {
+        self.addedIps = [NSString stringWithFormat:@"%@,%@", self.addedIps, [device valueForKey:@"url"]];
+        [self addDevice:device];
+    }
 }
 
 - (void)addDevice:(NSDictionary *)device {
@@ -157,6 +153,22 @@
     }
     [self.devices addObject:device];
     [self.tv_devices reloadData];
+}
+
+- (void)removeDevice:(NSString *)ip {
+    NSString *url = [NSString stringWithFormat:@"http://%@:12580/", ip];
+    if ([self.addedIps containsString:url]) {
+        NSMutableString *tmp = [[NSMutableString alloc] initWithString:self.addedIps];
+        [tmp deleteCharactersInRange:[tmp rangeOfString:url]];
+        self.addedIps = tmp;
+        for (NSUInteger i = 0; i < self.devices.count; i++) {
+            if ([[self.devices[i] valueForKey:@"url"] isEqualToString:url]) {
+                [self.devices removeObjectAtIndex:i];
+                [self.tv_devices reloadData];
+                break;
+            }
+        }
+    }
 }
 
 - (void)showSuccessWithText:(NSString *)text {
