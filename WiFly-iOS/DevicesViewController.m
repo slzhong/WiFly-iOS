@@ -109,6 +109,7 @@
 }
 
 - (void)searchIp:(NSString *)ip {
+    NSLog(@"%@", ip);
     if (![ip isEqualToString:self.ip]) {
         NSString *url = [NSString stringWithFormat:@"http://%@:12580/id", ip];
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
