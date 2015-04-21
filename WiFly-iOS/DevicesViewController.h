@@ -10,7 +10,12 @@
 
 #import "SVProgressHUD.h"
 #import "ServerManager.h"
+#import "DeviceTableViewCell.h"
 
-@interface DevicesViewController : UIViewController
+@interface DevicesViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
+
+@property (strong, nonatomic) IBOutlet UITableView *tv_devices;
+
+@property (strong, nonatomic) NSMutableArray *devices;
 
 @end

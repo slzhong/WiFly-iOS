@@ -10,4 +10,13 @@
 
 @interface DeviceTableViewCell : UITableViewCell
 
+@property (strong, nonatomic) IBOutlet UIImageView *iv_icon;
+@property (strong, nonatomic) IBOutlet UILabel *lb_name;
+@property (strong, nonatomic) IBOutlet UILabel *lb_ip;
+
+- (void)setViews:(NSString *)icon name:(NSString *)name ip:(NSString *)ip;
+- (void)setIcon:(NSString *)icon;
+- (void)setName:(NSString *)name;
+- (void)setIp:(NSString *)ip;
+
 @end

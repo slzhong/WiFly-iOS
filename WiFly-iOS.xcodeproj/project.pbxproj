@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		310727961AE5DB4000F99477 /* mac.png in Resources */ = {isa = PBXBuildFile; fileRef = 310727941AE5DB4000F99477 /* mac.png */; };
+		310727971AE5DB4000F99477 /* mac@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 310727951AE5DB4000F99477 /* mac@2x.png */; };
 		31A91A2D1AE3E7DC007D0669 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 31A91A2C1AE3E7DC007D0669 /* main.m */; };
 		31A91A301AE3E7DC007D0669 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 31A91A2F1AE3E7DC007D0669 /* AppDelegate.m */; };
 		31A91A331AE3E7DC007D0669 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31A91A321AE3E7DC007D0669 /* FirstViewController.m */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		310727941AE5DB4000F99477 /* mac.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mac.png; sourceTree = "<group>"; };
+		310727951AE5DB4000F99477 /* mac@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mac@2x.png"; sourceTree = "<group>"; };
 		31A91A271AE3E7DC007D0669 /* WiFly-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WiFly-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		31A91A2B1AE3E7DC007D0669 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31A91A2C1AE3E7DC007D0669 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -96,6 +100,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		310727981AE5DDB300F99477 /* Trash */ = {
+			isa = PBXGroup;
+			children = (
+				31A91A311AE3E7DC007D0669 /* FirstViewController.h */,
+				31A91A321AE3E7DC007D0669 /* FirstViewController.m */,
+				31A91A341AE3E7DC007D0669 /* SecondViewController.h */,
+				31A91A351AE3E7DC007D0669 /* SecondViewController.m */,
+			);
+			name = Trash;
+			sourceTree = "<group>";
+		};
 		31A91A1E1AE3E7DC007D0669 = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +134,7 @@
 		31A91A291AE3E7DC007D0669 /* WiFly-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				310727981AE5DDB300F99477 /* Trash */,
 				31FB520A1AE54102008BF24D /* Managers */,
 				31FB52091AE540EE008BF24D /* SubViews */,
 				31FB52081AE540DE008BF24D /* ViewControllers */,
@@ -162,6 +178,8 @@
 		31ECF0DA1AE3FB6C00BE2AE1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				310727941AE5DB4000F99477 /* mac.png */,
+				310727951AE5DB4000F99477 /* mac@2x.png */,
 				31FB520B1AE546F5008BF24D /* download.png */,
 				31FB520C1AE546F5008BF24D /* download@2x.png */,
 				31ECF0DB1AE3FB7F00BE2AE1 /* WiFly-icon-transparent.png */,
@@ -173,10 +191,6 @@
 		31FB52081AE540DE008BF24D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				31A91A311AE3E7DC007D0669 /* FirstViewController.h */,
-				31A91A321AE3E7DC007D0669 /* FirstViewController.m */,
-				31A91A341AE3E7DC007D0669 /* SecondViewController.h */,
-				31A91A351AE3E7DC007D0669 /* SecondViewController.m */,
 				31D845011AE53C1100FA5AE8 /* DevicesViewController.h */,
 				31D845021AE53C1100FA5AE8 /* DevicesViewController.m */,
 			);
@@ -294,10 +308,12 @@
 			files = (
 				31A91A391AE3E7DC007D0669 /* Main.storyboard in Resources */,
 				31ECF0DD1AE3FB7F00BE2AE1 /* WiFly-icon-transparent.png in Resources */,
+				310727971AE5DB4000F99477 /* mac@2x.png in Resources */,
 				31A91A3E1AE3E7DC007D0669 /* LaunchScreen.xib in Resources */,
 				31FF46A01AE5500B0071B001 /* DeviceTableViewCell.xib in Resources */,
 				31A91A3B1AE3E7DC007D0669 /* Images.xcassets in Resources */,
 				31FB520E1AE546F5008BF24D /* download@2x.png in Resources */,
+				310727961AE5DB4000F99477 /* mac.png in Resources */,
 				31ECF0DE1AE3FB7F00BE2AE1 /* WiFly-icon.png in Resources */,
 				31FB520D1AE546F5008BF24D /* download.png in Resources */,
 			);

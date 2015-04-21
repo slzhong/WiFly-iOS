@@ -20,4 +20,22 @@
     // Configure the view for the selected state
 }
 
+- (void)setViews:(NSString *)icon name:(NSString *)name ip:(NSString *)ip {
+    [self setIcon:icon];
+    [self setName:name];
+    [self setIp:ip];
+}
+
+- (void)setIcon:(NSString *)icon {
+    self.iv_icon.image = [UIImage imageNamed:icon];
+}
+
+- (void)setName:(NSString *)name {
+    self.lb_name.text = name;
+}
+
+- (void)setIp:(NSString *)ip {
+    self.lb_ip.text = ip;
+}
+
 @end

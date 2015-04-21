@@ -18,6 +18,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [self initData];
     [self initViews];
     
     if ([self checkId]) {
@@ -25,6 +26,15 @@
     } else {
         [self showPrompt];
     }
+    
+    for (int i = 0; i < 10; i++) {
+        NSMutableDictionary *device = [NSMutableDictionary dictionary];
+        [device setValue:@"mac" forKey:@"type"];
+        [device setValue:[NSString stringWithFormat:@"mac%d", i] forKey:@"name"];
+        [device setValue:[NSString stringWithFormat:@"0.0.0.%d", i] forKey:@"ip"];
+        [self.devices addObject:device];
+    }
+    [self.tv_devices reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,6 +45,14 @@
 - (void) initViews {
     [SVProgressHUD setBackgroundColor:[UIColor colorWithRed:78/255.0f green:208/255.0f blue:253/255.0f alpha:0.9f]];
     [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
+    
+    self.tv_devices.delegate = self;
+    self.tv_devices.dataSource = self;
+//    self.tv_devices.contentInset = UIEdgeInsetsMake(-64, 0, 0, 0);
+}
+
+- (void) initData {
+    self.devices = [NSMutableArray array];
 }
 
 - (BOOL)checkId {
@@ -65,7 +83,7 @@
 }
 
 - (void)searchDevice {
-    [self showProgressWithText:@"Searching For Devices..."];
+//    [self showProgressWithText:@"Searching For Devices..."];
 }
 
 - (void)showSuccessWithText:(NSString *)text {
@@ -88,6 +106,39 @@
     [SVProgressHUD dismiss];
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.devices.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    ContactParentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ContactParentTableViewCell"];
+//    if (cell == nil) {
+//        cell = [[[NSBundle mainBundle] loadNibNamed:@"ContactParentTableViewCell" owner:self options:nil]lastObject];
+//    }
+//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    ContactEntity *ce = self.sbResult[row];
+//    NSString *subTitle;
+//    if([ce.type isEqualToString:@"1"]) {
+//        subTitle = [NSString stringWithFormat:@"%@的%@",ce.dsc,ce.role];
+//    } else {
+//        subTitle = [NSString stringWithFormat:@"%@老师",ce.dsc];
+//    }
+//    [cell setAvatar:ce.avatar_url name:ce.name dsc:subTitle];
+//    return cell;
+
+    DeviceTableViewCell *cell = [self.tv_devices dequeueReusableCellWithIdentifier:@"DeviceTableViewCell"];
+    if (cell == nil) {
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"DeviceTableViewCell" owner:self options:nil] lastObject];
+    }
+//    [cell setViews:@"mac.png" name:@"mac" ip:@"0.0.0.0"];
+    NSMutableDictionary *device = [self.devices objectAtIndex:indexPath.row];
+    [cell setViews:[NSString stringWithFormat:@"%@.png", [device valueForKey:@"type"]] name:[device valueForKey:@"name"] ip:[device valueForKey:@"ip"]];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"%@", indexPath);
+}
 /*
 #pragma mark - Navigation
 

@@ -13,12 +13,32 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z8V-me-duf">
-                        <rect key="frame" x="8" y="8" width="53" height="53"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mac.png" translatesAutoresizingMaskIntoConstraints="NO" id="Z8V-me-duf">
+                        <rect key="frame" x="20" y="15" width="40" height="40"/>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8u-s2-Vkb">
+                        <rect key="frame" x="84" y="15" width="70" height="21"/>
+                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ip" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A8i-rw-xoa">
+                        <rect key="frame" x="162" y="18" width="150" height="21"/>
+                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="iv_icon" destination="Z8V-me-duf" id="9CU-Xs-uZf"/>
+                <outlet property="lb_ip" destination="A8i-rw-xoa" id="HDt-bF-gcs"/>
+                <outlet property="lb_name" destination="e8u-s2-Vkb" id="3mr-uI-mmr"/>
+            </connections>
             <point key="canvasLocation" x="245" y="296"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="mac.png" width="53" height="53"/>
+    </resources>
 </document>

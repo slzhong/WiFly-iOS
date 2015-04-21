@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Jyr-fx-x4c">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Devices-->
@@ -77,17 +76,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="DjK-Bn-ugR">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="69" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="DjK-Bn-ugR">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottomMargin" secondItem="DjK-Bn-ugR" secondAttribute="bottom" id="CoH-CB-9Qg"/>
-                            <constraint firstItem="DjK-Bn-ugR" firstAttribute="leading" secondItem="56z-RS-LOq" secondAttribute="leading" id="FO7-5f-44v"/>
-                            <constraint firstItem="DjK-Bn-ugR" firstAttribute="top" secondItem="Qdb-U8-1dA" secondAttribute="bottom" id="c39-Uq-wyD"/>
-                            <constraint firstAttribute="trailing" secondItem="DjK-Bn-ugR" secondAttribute="trailing" id="cyU-2s-9LE"/>
+                            <constraint firstItem="DjK-Bn-ugR" firstAttribute="top" secondItem="Qdb-U8-1dA" secondAttribute="bottom" constant="-64" id="KQW-b5-fqP"/>
+                            <constraint firstItem="DjK-Bn-ugR" firstAttribute="bottom" secondItem="L8d-wn-uo0" secondAttribute="top" id="U0d-Cu-nnU"/>
+                            <constraint firstItem="DjK-Bn-ugR" firstAttribute="leading" secondItem="56z-RS-LOq" secondAttribute="leading" id="aiX-Eg-Ydl"/>
+                            <constraint firstAttribute="trailing" secondItem="DjK-Bn-ugR" secondAttribute="trailing" id="dUs-Js-L3p"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="WiFly" id="1P4-cH-UJj">
@@ -101,6 +100,9 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tv_devices" destination="DjK-Bn-ugR" id="50l-ZL-TTF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tx0-Ef-Q1l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -129,7 +131,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="device.png" width="512" height="512"/>
+        <image name="device.png" width="35" height="29"/>
         <image name="download.png" width="25" height="25"/>
     </resources>
 </document>
