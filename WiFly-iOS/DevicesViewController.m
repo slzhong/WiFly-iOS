@@ -109,7 +109,6 @@
 }
 
 - (void)searchIp:(NSString *)ip {
-    NSLog(@"%@", ip);
     if (![ip isEqualToString:self.ip]) {
         NSString *url = [NSString stringWithFormat:@"http://%@:12580/id", ip];
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -169,6 +168,14 @@
                 break;
             }
         }
+    }
+    if (self.devices.count <= 0) {
+        NSString *hint = @"Searching For Devices...";
+        NSString *ssid = [self getSsid];
+        if (ssid.length > 0) {
+            hint = [NSString stringWithFormat:@"%@\n\nCurrent WiFi:\n %@", hint, ssid];
+        }
+        [self showProgressWithText:hint];
     }
 }
 
