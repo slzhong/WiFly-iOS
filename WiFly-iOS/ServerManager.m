@@ -26,8 +26,8 @@ static ServerManager *serverManager = nil;
 }
 
 - (void)initRoutes {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"];
-    [self.server addGETHandlerForBasePath:@"/" directoryPath:[path substringToIndex:[path rangeOfString:@"index.html"].location] indexFilename:@"index.html" cacheAge:3600 allowRangeRequests:NO];
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"];
+//    [self.server addGETHandlerForBasePath:@"/" directoryPath:[path substringToIndex:[path rangeOfString:@"index.html"].location] indexFilename:@"index.html" cacheAge:3600 allowRangeRequests:NO];
     
     [self.server addHandlerForMethod:@"GET" path:@"/id" requestClass:[GCDWebServerRequest class] processBlock:^GCDWebServerResponse *(GCDWebServerRequest* request) {
         ServerManager *sm = [ServerManager sharedInstance];

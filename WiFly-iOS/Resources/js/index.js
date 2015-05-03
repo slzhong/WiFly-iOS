@@ -6,9 +6,9 @@
   }
 
   function getHostName () {
-    $.get(location.href + 'id', function (data) {
+    $.get(location.href + ':12580/id', function (data) {
       if (data) {
-        $('#submit').text('UPLOAD TO "' + data.name + '"');
+        $('#submit').text('UPLOAD TO "' + data + '"');
       }
     });
   }

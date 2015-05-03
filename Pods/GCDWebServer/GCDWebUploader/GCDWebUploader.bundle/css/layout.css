@@ -1,0 +1,27 @@
+/*
+ * common values
+ * main blue: #31c8fd
+ * dark text color: #666
+ * light text color: #999
+ * dark background color: #999
+ * light background color: #ccc
+ */
+
+/* reset */
+
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: none;
+  list-style: none;
+  text-decoration: none;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 100;
+
+  box-sizing: border-box;
+
+  transition: background 0.3s, color 0.3s, opacity 0.3s;
+}
