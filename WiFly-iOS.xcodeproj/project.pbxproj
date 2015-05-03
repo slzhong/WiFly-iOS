@@ -11,6 +11,14 @@
 		310727971AE5DB4000F99477 /* mac@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 310727951AE5DB4000F99477 /* mac@2x.png */; };
 		3107279B1AE5EF2700F99477 /* ios.png in Resources */ = {isa = PBXBuildFile; fileRef = 310727991AE5EF2700F99477 /* ios.png */; };
 		3107279C1AE5EF2700F99477 /* ios@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3107279A1AE5EF2700F99477 /* ios@2x.png */; };
+		3160120F1AF62D4000A78ACF /* index.css in Resources */ = {isa = PBXBuildFile; fileRef = 316012051AF62D4000A78ACF /* index.css */; };
+		316012101AF62D4000A78ACF /* layout.css in Resources */ = {isa = PBXBuildFile; fileRef = 316012061AF62D4000A78ACF /* layout.css */; };
+		316012111AF62D4000A78ACF /* favicon.ico in Resources */ = {isa = PBXBuildFile; fileRef = 316012081AF62D4000A78ACF /* favicon.ico */; };
+		316012121AF62D4000A78ACF /* icon.ico in Resources */ = {isa = PBXBuildFile; fileRef = 316012091AF62D4000A78ACF /* icon.ico */; };
+		316012131AF62D4000A78ACF /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 3160120A1AF62D4000A78ACF /* index.html */; };
+		316012141AF62D4000A78ACF /* index.js in Resources */ = {isa = PBXBuildFile; fileRef = 3160120C1AF62D4000A78ACF /* index.js */; };
+		316012151AF62D4000A78ACF /* jquery-2.1.3.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 3160120D1AF62D4000A78ACF /* jquery-2.1.3.min.js */; };
+		316012161AF62D4000A78ACF /* template.js in Resources */ = {isa = PBXBuildFile; fileRef = 3160120E1AF62D4000A78ACF /* template.js */; };
 		31A91A2D1AE3E7DC007D0669 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 31A91A2C1AE3E7DC007D0669 /* main.m */; };
 		31A91A301AE3E7DC007D0669 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 31A91A2F1AE3E7DC007D0669 /* AppDelegate.m */; };
 		31A91A331AE3E7DC007D0669 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31A91A321AE3E7DC007D0669 /* FirstViewController.m */; };
@@ -45,6 +53,14 @@
 		310727951AE5DB4000F99477 /* mac@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mac@2x.png"; sourceTree = "<group>"; };
 		310727991AE5EF2700F99477 /* ios.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ios.png; sourceTree = "<group>"; };
 		3107279A1AE5EF2700F99477 /* ios@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios@2x.png"; sourceTree = "<group>"; };
+		316012051AF62D4000A78ACF /* index.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = index.css; sourceTree = "<group>"; };
+		316012061AF62D4000A78ACF /* layout.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = layout.css; sourceTree = "<group>"; };
+		316012081AF62D4000A78ACF /* favicon.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = favicon.ico; sourceTree = "<group>"; };
+		316012091AF62D4000A78ACF /* icon.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = icon.ico; sourceTree = "<group>"; };
+		3160120A1AF62D4000A78ACF /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		3160120C1AF62D4000A78ACF /* index.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; };
+		3160120D1AF62D4000A78ACF /* jquery-2.1.3.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jquery-2.1.3.min.js"; sourceTree = "<group>"; };
+		3160120E1AF62D4000A78ACF /* template.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = template.js; sourceTree = "<group>"; };
 		31A91A271AE3E7DC007D0669 /* WiFly-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WiFly-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		31A91A2B1AE3E7DC007D0669 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31A91A2C1AE3E7DC007D0669 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -115,6 +131,45 @@
 			name = Trash;
 			sourceTree = "<group>";
 		};
+		316012031AF62D4000A78ACF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				316012041AF62D4000A78ACF /* css */,
+				316012071AF62D4000A78ACF /* img */,
+				3160120A1AF62D4000A78ACF /* index.html */,
+				3160120B1AF62D4000A78ACF /* js */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		316012041AF62D4000A78ACF /* css */ = {
+			isa = PBXGroup;
+			children = (
+				316012051AF62D4000A78ACF /* index.css */,
+				316012061AF62D4000A78ACF /* layout.css */,
+			);
+			path = css;
+			sourceTree = "<group>";
+		};
+		316012071AF62D4000A78ACF /* img */ = {
+			isa = PBXGroup;
+			children = (
+				316012081AF62D4000A78ACF /* favicon.ico */,
+				316012091AF62D4000A78ACF /* icon.ico */,
+			);
+			path = img;
+			sourceTree = "<group>";
+		};
+		3160120B1AF62D4000A78ACF /* js */ = {
+			isa = PBXGroup;
+			children = (
+				3160120C1AF62D4000A78ACF /* index.js */,
+				3160120D1AF62D4000A78ACF /* jquery-2.1.3.min.js */,
+				3160120E1AF62D4000A78ACF /* template.js */,
+			);
+			path = js;
+			sourceTree = "<group>";
+		};
 		31A91A1E1AE3E7DC007D0669 = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				310727981AE5DDB300F99477 /* Trash */,
+				316012031AF62D4000A78ACF /* Resources */,
 				31FB520A1AE54102008BF24D /* Managers */,
 				31FB52091AE540EE008BF24D /* SubViews */,
 				31FB52081AE540DE008BF24D /* ViewControllers */,
@@ -314,16 +370,24 @@
 			files = (
 				31A91A391AE3E7DC007D0669 /* Main.storyboard in Resources */,
 				31ECF0DD1AE3FB7F00BE2AE1 /* WiFly-icon-transparent.png in Resources */,
+				316012151AF62D4000A78ACF /* jquery-2.1.3.min.js in Resources */,
 				310727971AE5DB4000F99477 /* mac@2x.png in Resources */,
 				31A91A3E1AE3E7DC007D0669 /* LaunchScreen.xib in Resources */,
 				31FF46A01AE5500B0071B001 /* DeviceTableViewCell.xib in Resources */,
+				316012161AF62D4000A78ACF /* template.js in Resources */,
+				316012101AF62D4000A78ACF /* layout.css in Resources */,
 				31A91A3B1AE3E7DC007D0669 /* Images.xcassets in Resources */,
 				3107279C1AE5EF2700F99477 /* ios@2x.png in Resources */,
 				3107279B1AE5EF2700F99477 /* ios.png in Resources */,
+				316012141AF62D4000A78ACF /* index.js in Resources */,
 				31FB520E1AE546F5008BF24D /* download@2x.png in Resources */,
+				316012121AF62D4000A78ACF /* icon.ico in Resources */,
+				3160120F1AF62D4000A78ACF /* index.css in Resources */,
 				310727961AE5DB4000F99477 /* mac.png in Resources */,
 				31ECF0DE1AE3FB7F00BE2AE1 /* WiFly-icon.png in Resources */,
 				31FB520D1AE546F5008BF24D /* download.png in Resources */,
+				316012111AF62D4000A78ACF /* favicon.ico in Resources */,
+				316012131AF62D4000A78ACF /* index.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

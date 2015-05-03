@@ -1,0 +1,67 @@
+.header {
+  width: 100%;
+  height: 50px;
+  background: rgba(49, 200, 253, 0.9);
+}
+
+.header-icon {
+  width: 50px;
+  height: 50px;
+  display: block;
+  margin: 0 auto;
+}
+
+.upload,
+.list {
+  width: 90%;
+  max-width: 500px;
+  margin: 40px auto;
+}
+
+#submit {
+  width: 100%;
+  height: 40px;
+  display: block;
+  background: #31c8fd;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+}
+#submit:hover {
+  opacity: 0.8;
+}
+#submit:disabled {
+  background: #ccc;
+}
+
+#file {
+  display: none;
+}
+
+.list-hint {
+  color: #999;
+  text-align: center;
+}
+
+.list-item {
+  line-height: 2.5em;
+  border-bottom: 1px solid #bbb;
+}
+
+.list-name,
+.list-status {
+  display: inline-block;
+  width: 49%;
+  color: #666;
+}
+
+.list-status {
+  text-align: right;
+  color: #999;
+}
+.list-status-success {
+  color: #0f0;
+}
+.list-status-error {
+  color: #f00;
+}
