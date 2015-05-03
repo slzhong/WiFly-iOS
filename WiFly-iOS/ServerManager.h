@@ -9,11 +9,13 @@
 #import <Foundation/Foundation.h>
 
 #import "GCDWebServer.h"
+#import "GCDWebUploader.h"
 #import "GCDWebServerDataResponse.h"
 
 @interface ServerManager : NSObject
 
 @property (strong, nonatomic) GCDWebServer *server;
+@property (strong, nonatomic) GCDWebUploader *transmitter;
 
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *url;
@@ -22,5 +24,7 @@
 
 - (void)start;
 - (void)setInfo:(NSString *)n url:(NSString *)u;
+
+- (void)startTransmitter;
 
 @end

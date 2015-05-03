@@ -23,6 +23,7 @@
     
     if ([self checkId]) {
         [self startServer];
+        [self startTransmitter];
     } else {
         [self showPrompt];
     }
@@ -92,6 +93,11 @@
         self.ipPrefix = [NSString stringWithFormat:@"%@%@.", self.ipPrefix,components[i]];
     }
     [self searchDevice];
+}
+
+- (void)startTransmitter {
+    ServerManager *sm = [ServerManager sharedInstance];
+    [sm startTransmitter];
 }
 
 - (void)searchDevice {
