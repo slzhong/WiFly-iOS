@@ -29,12 +29,24 @@
     }
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    if ([self checkId]) {
+        self.progressShouldDisplay = YES;
+        [self detectDevice];
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 - (void) initViews {
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.backBarButtonItem = item;
+    
     [SVProgressHUD setBackgroundColor:[UIColor colorWithRed:78/255.0f green:208/255.0f blue:253/255.0f alpha:0.9f]];
     [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
     
@@ -55,6 +67,13 @@
 - (BOOL)checkId {
     return [[NSUserDefaults standardUserDefaults] valueForKey:@"name"] != nil;
 }
+
+- (IBAction)showFiles:(id)sender {
+    self.progressShouldDisplay = NO;
+    [self dismissProgress];
+    [self performSegueWithIdentifier:@"showFiles" sender:sender];
+}
+
 
 - (void)showPrompt {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"WELCOME" message:@"Enter A Name For Your Device" delegate:self cancelButtonTitle:@"DONE" otherButtonTitles:nil, nil];
@@ -101,16 +120,20 @@
 }
 
 - (void)searchDevice {
-    if (self.devices.count <= 0) {
+    [self detectDevice];
+    for (int i = 0; i < 10; i++) {
+        [self searchIp:[NSString stringWithFormat:@"%@%d", self.ipPrefix, self.current + i]];
+    }
+}
+
+- (void)detectDevice {
+    if (self.progressShouldDisplay && self.devices.count <= 0) {
         NSString *hint = @"Searching For Devices...";
         NSString *ssid = [self getSsid];
         if (ssid.length > 0) {
             hint = [NSString stringWithFormat:@"%@\n\nCurrent WiFi:\n %@", hint, ssid];
         }
         [self showProgressWithText:hint];
-    }
-    for (int i = 0; i < 10; i++) {
-        [self searchIp:[NSString stringWithFormat:@"%@%d", self.ipPrefix, self.current + i]];
     }
 }
 
@@ -175,31 +198,24 @@
             }
         }
     }
-    if (self.devices.count <= 0) {
-        NSString *hint = @"Searching For Devices...";
-        NSString *ssid = [self getSsid];
-        if (ssid.length > 0) {
-            hint = [NSString stringWithFormat:@"%@\n\nCurrent WiFi:\n %@", hint, ssid];
-        }
-        [self showProgressWithText:hint];
-    }
+    [self detectDevice];
 }
 
 - (void)showSuccessWithText:(NSString *)text {
-    [SVProgressHUD showSuccessWithStatus:text maskType:SVProgressHUDMaskTypeGradient];
+    [SVProgressHUD showSuccessWithStatus:text maskType:SVProgressHUDMaskTypeNone];
 }
 
 - (void)showErrorWithText:(NSString *)text {
-    [SVProgressHUD showErrorWithStatus:text maskType:SVProgressHUDMaskTypeClear];
+    [SVProgressHUD showErrorWithStatus:text maskType:SVProgressHUDMaskTypeNone];
 }
 
 - (void)showInfoWithText:(NSString *)text {
-    [SVProgressHUD showInfoWithStatus:text maskType:SVProgressHUDMaskTypeClear];
+    [SVProgressHUD showInfoWithStatus:text maskType:SVProgressHUDMaskTypeNone];
 }
 
 - (void)showProgressWithText:(NSString *)text {
     if (!self.progressDisplayed) {
-        [SVProgressHUD showWithStatus:text maskType:SVProgressHUDMaskTypeClear];
+        [SVProgressHUD showWithStatus:text maskType:SVProgressHUDMaskTypeNone];
         self.progressDisplayed = YES;
     }
 }

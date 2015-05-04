@@ -27,6 +27,7 @@
 		31A91A3B1AE3E7DC007D0669 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31A91A3A1AE3E7DC007D0669 /* Images.xcassets */; };
 		31A91A3E1AE3E7DC007D0669 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31A91A3C1AE3E7DC007D0669 /* LaunchScreen.xib */; };
 		31A91A4A1AE3E7DC007D0669 /* WiFly_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 31A91A491AE3E7DC007D0669 /* WiFly_iOSTests.m */; };
+		31CE3E401AF75E5700BA8F28 /* FilesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31CE3E3F1AF75E5700BA8F28 /* FilesViewController.m */; };
 		31D845031AE53C1100FA5AE8 /* DevicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31D845021AE53C1100FA5AE8 /* DevicesViewController.m */; };
 		31ECF0D91AE3ED1E00BE2AE1 /* ServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 31ECF0D81AE3ED1E00BE2AE1 /* ServerManager.m */; };
 		31ECF0DD1AE3FB7F00BE2AE1 /* WiFly-icon-transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = 31ECF0DB1AE3FB7F00BE2AE1 /* WiFly-icon-transparent.png */; };
@@ -76,6 +77,8 @@
 		31A91A431AE3E7DC007D0669 /* WiFly-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WiFly-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		31A91A481AE3E7DC007D0669 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31A91A491AE3E7DC007D0669 /* WiFly_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WiFly_iOSTests.m; sourceTree = "<group>"; };
+		31CE3E3E1AF75E5700BA8F28 /* FilesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilesViewController.h; sourceTree = "<group>"; };
+		31CE3E3F1AF75E5700BA8F28 /* FilesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilesViewController.m; sourceTree = "<group>"; };
 		31D845011AE53C1100FA5AE8 /* DevicesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DevicesViewController.h; sourceTree = "<group>"; };
 		31D845021AE53C1100FA5AE8 /* DevicesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DevicesViewController.m; sourceTree = "<group>"; };
 		31ECF0D71AE3ED1E00BE2AE1 /* ServerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerManager.h; sourceTree = "<group>"; };
@@ -255,6 +258,8 @@
 			children = (
 				31D845011AE53C1100FA5AE8 /* DevicesViewController.h */,
 				31D845021AE53C1100FA5AE8 /* DevicesViewController.m */,
+				31CE3E3E1AF75E5700BA8F28 /* FilesViewController.h */,
+				31CE3E3F1AF75E5700BA8F28 /* FilesViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -440,6 +445,7 @@
 			files = (
 				31ECF0D91AE3ED1E00BE2AE1 /* ServerManager.m in Sources */,
 				31A91A361AE3E7DC007D0669 /* SecondViewController.m in Sources */,
+				31CE3E401AF75E5700BA8F28 /* FilesViewController.m in Sources */,
 				31FF469F1AE5500B0071B001 /* DeviceTableViewCell.m in Sources */,
 				31D845031AE53C1100FA5AE8 /* DevicesViewController.m in Sources */,
 				31A91A301AE3E7DC007D0669 /* AppDelegate.m in Sources */,

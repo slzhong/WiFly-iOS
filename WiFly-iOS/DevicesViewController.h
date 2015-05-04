@@ -28,5 +28,6 @@
 @property int current;
 
 @property BOOL progressDisplayed;
+@property BOOL progressShouldDisplay;
 
 @end
