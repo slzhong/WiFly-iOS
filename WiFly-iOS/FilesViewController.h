@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import "FileTableViewCell.h"
+
 @interface FilesViewController : UITableViewController
+
+@property (strong, nonatomic) NSMutableArray *files;
 
 @end

@@ -24,6 +24,11 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     [self initViews];
+    [self initData];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self updateFiles];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,32 +37,49 @@
 }
 
 - (void)initViews {
+    
+}
 
+- (void)initData {
+    
+}
+
+- (void) updateFiles {
+    self.files = [NSMutableArray array];
+    NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSDirectoryEnumerator *em = [fm enumeratorAtPath:documentsPath];
+    NSString *fileName;
+    while (fileName = [em nextObject] ) {
+        NSMutableDictionary *file = [NSMutableDictionary dictionary];
+        NSDictionary *attributes = [fm attributesOfItemAtPath:[documentsPath stringByAppendingPathComponent:fileName] error:nil];
+        [file setValue:fileName forKey:@"name"];
+        [file setValue:[attributes valueForKey:NSFileSize] forKey:@"size"];
+        [self.files addObject:file];
+    }
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return self.files.count;
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
-    // Configure the cell...
-    
+    FileTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"FileTableViewCell"];
+    if (cell == nil) {
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"FileTableViewCell" owner:self options:nil] lastObject];
+    }
+    NSMutableDictionary *file = [self.files objectAtIndex:indexPath.row];
+    [cell setViews:[file valueForKey:@"name"] size:[file valueForKey:@"size"]];
     return cell;
 }
-*/
 
 /*
 // Override to support conditional editing of the table view.

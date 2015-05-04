@@ -45,7 +45,7 @@ static ServerManager *serverManager = nil;
 }
 
 - (void)startTransmitter {
-    NSString* documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
     self.transmitter = [[GCDWebUploader alloc] initWithUploadDirectory:documentsPath];
     [self.transmitter start];
     NSLog(@"%@", self.transmitter.serverURL);

@@ -28,6 +28,20 @@
 		31A91A3E1AE3E7DC007D0669 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31A91A3C1AE3E7DC007D0669 /* LaunchScreen.xib */; };
 		31A91A4A1AE3E7DC007D0669 /* WiFly_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 31A91A491AE3E7DC007D0669 /* WiFly_iOSTests.m */; };
 		31CE3E401AF75E5700BA8F28 /* FilesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31CE3E3F1AF75E5700BA8F28 /* FilesViewController.m */; };
+		31CE3E441AF767F700BA8F28 /* FileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 31CE3E421AF767F700BA8F28 /* FileTableViewCell.m */; };
+		31CE3E451AF767F700BA8F28 /* FileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31CE3E431AF767F700BA8F28 /* FileTableViewCell.xib */; };
+		31CE3E521AF77A2D00BA8F28 /* file_archieve.png in Resources */ = {isa = PBXBuildFile; fileRef = 31CE3E461AF77A2D00BA8F28 /* file_archieve.png */; };
+		31CE3E531AF77A2D00BA8F28 /* file_archieve@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31CE3E471AF77A2D00BA8F28 /* file_archieve@2x.png */; };
+		31CE3E541AF77A2D00BA8F28 /* file_audio.png in Resources */ = {isa = PBXBuildFile; fileRef = 31CE3E481AF77A2D00BA8F28 /* file_audio.png */; };
+		31CE3E551AF77A2D00BA8F28 /* file_audio@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31CE3E491AF77A2D00BA8F28 /* file_audio@2x.png */; };
+		31CE3E561AF77A2D00BA8F28 /* file_document.png in Resources */ = {isa = PBXBuildFile; fileRef = 31CE3E4A1AF77A2D00BA8F28 /* file_document.png */; };
+		31CE3E571AF77A2D00BA8F28 /* file_document@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31CE3E4B1AF77A2D00BA8F28 /* file_document@2x.png */; };
+		31CE3E581AF77A2D00BA8F28 /* file_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 31CE3E4C1AF77A2D00BA8F28 /* file_image.png */; };
+		31CE3E591AF77A2D00BA8F28 /* file_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31CE3E4D1AF77A2D00BA8F28 /* file_image@2x.png */; };
+		31CE3E5A1AF77A2D00BA8F28 /* file_video.png in Resources */ = {isa = PBXBuildFile; fileRef = 31CE3E4E1AF77A2D00BA8F28 /* file_video.png */; };
+		31CE3E5B1AF77A2D00BA8F28 /* file_video@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31CE3E4F1AF77A2D00BA8F28 /* file_video@2x.png */; };
+		31CE3E5C1AF77A2D00BA8F28 /* file.png in Resources */ = {isa = PBXBuildFile; fileRef = 31CE3E501AF77A2D00BA8F28 /* file.png */; };
+		31CE3E5D1AF77A2D00BA8F28 /* file@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31CE3E511AF77A2D00BA8F28 /* file@2x.png */; };
 		31D845031AE53C1100FA5AE8 /* DevicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31D845021AE53C1100FA5AE8 /* DevicesViewController.m */; };
 		31ECF0D91AE3ED1E00BE2AE1 /* ServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 31ECF0D81AE3ED1E00BE2AE1 /* ServerManager.m */; };
 		31ECF0DD1AE3FB7F00BE2AE1 /* WiFly-icon-transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = 31ECF0DB1AE3FB7F00BE2AE1 /* WiFly-icon-transparent.png */; };
@@ -79,6 +93,21 @@
 		31A91A491AE3E7DC007D0669 /* WiFly_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WiFly_iOSTests.m; sourceTree = "<group>"; };
 		31CE3E3E1AF75E5700BA8F28 /* FilesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilesViewController.h; sourceTree = "<group>"; };
 		31CE3E3F1AF75E5700BA8F28 /* FilesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilesViewController.m; sourceTree = "<group>"; };
+		31CE3E411AF767F700BA8F28 /* FileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileTableViewCell.h; sourceTree = "<group>"; };
+		31CE3E421AF767F700BA8F28 /* FileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileTableViewCell.m; sourceTree = "<group>"; };
+		31CE3E431AF767F700BA8F28 /* FileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FileTableViewCell.xib; sourceTree = "<group>"; };
+		31CE3E461AF77A2D00BA8F28 /* file_archieve.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = file_archieve.png; sourceTree = "<group>"; };
+		31CE3E471AF77A2D00BA8F28 /* file_archieve@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "file_archieve@2x.png"; sourceTree = "<group>"; };
+		31CE3E481AF77A2D00BA8F28 /* file_audio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = file_audio.png; sourceTree = "<group>"; };
+		31CE3E491AF77A2D00BA8F28 /* file_audio@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "file_audio@2x.png"; sourceTree = "<group>"; };
+		31CE3E4A1AF77A2D00BA8F28 /* file_document.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = file_document.png; sourceTree = "<group>"; };
+		31CE3E4B1AF77A2D00BA8F28 /* file_document@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "file_document@2x.png"; sourceTree = "<group>"; };
+		31CE3E4C1AF77A2D00BA8F28 /* file_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = file_image.png; sourceTree = "<group>"; };
+		31CE3E4D1AF77A2D00BA8F28 /* file_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "file_image@2x.png"; sourceTree = "<group>"; };
+		31CE3E4E1AF77A2D00BA8F28 /* file_video.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = file_video.png; sourceTree = "<group>"; };
+		31CE3E4F1AF77A2D00BA8F28 /* file_video@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "file_video@2x.png"; sourceTree = "<group>"; };
+		31CE3E501AF77A2D00BA8F28 /* file.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = file.png; sourceTree = "<group>"; };
+		31CE3E511AF77A2D00BA8F28 /* file@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "file@2x.png"; sourceTree = "<group>"; };
 		31D845011AE53C1100FA5AE8 /* DevicesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DevicesViewController.h; sourceTree = "<group>"; };
 		31D845021AE53C1100FA5AE8 /* DevicesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DevicesViewController.m; sourceTree = "<group>"; };
 		31ECF0D71AE3ED1E00BE2AE1 /* ServerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerManager.h; sourceTree = "<group>"; };
@@ -241,6 +270,18 @@
 		31ECF0DA1AE3FB6C00BE2AE1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				31CE3E461AF77A2D00BA8F28 /* file_archieve.png */,
+				31CE3E471AF77A2D00BA8F28 /* file_archieve@2x.png */,
+				31CE3E481AF77A2D00BA8F28 /* file_audio.png */,
+				31CE3E491AF77A2D00BA8F28 /* file_audio@2x.png */,
+				31CE3E4A1AF77A2D00BA8F28 /* file_document.png */,
+				31CE3E4B1AF77A2D00BA8F28 /* file_document@2x.png */,
+				31CE3E4C1AF77A2D00BA8F28 /* file_image.png */,
+				31CE3E4D1AF77A2D00BA8F28 /* file_image@2x.png */,
+				31CE3E4E1AF77A2D00BA8F28 /* file_video.png */,
+				31CE3E4F1AF77A2D00BA8F28 /* file_video@2x.png */,
+				31CE3E501AF77A2D00BA8F28 /* file.png */,
+				31CE3E511AF77A2D00BA8F28 /* file@2x.png */,
 				310727941AE5DB4000F99477 /* mac.png */,
 				310727951AE5DB4000F99477 /* mac@2x.png */,
 				310727991AE5EF2700F99477 /* ios.png */,
@@ -270,6 +311,9 @@
 				31FF469C1AE5500B0071B001 /* DeviceTableViewCell.h */,
 				31FF469D1AE5500B0071B001 /* DeviceTableViewCell.m */,
 				31FF469E1AE5500B0071B001 /* DeviceTableViewCell.xib */,
+				31CE3E411AF767F700BA8F28 /* FileTableViewCell.h */,
+				31CE3E421AF767F700BA8F28 /* FileTableViewCell.m */,
+				31CE3E431AF767F700BA8F28 /* FileTableViewCell.xib */,
 			);
 			name = SubViews;
 			sourceTree = "<group>";
@@ -374,25 +418,38 @@
 			buildActionMask = 2147483647;
 			files = (
 				31A91A391AE3E7DC007D0669 /* Main.storyboard in Resources */,
+				31CE3E5D1AF77A2D00BA8F28 /* file@2x.png in Resources */,
 				31ECF0DD1AE3FB7F00BE2AE1 /* WiFly-icon-transparent.png in Resources */,
+				31CE3E561AF77A2D00BA8F28 /* file_document.png in Resources */,
+				31CE3E541AF77A2D00BA8F28 /* file_audio.png in Resources */,
+				31CE3E521AF77A2D00BA8F28 /* file_archieve.png in Resources */,
 				316012151AF62D4000A78ACF /* jquery-2.1.3.min.js in Resources */,
 				310727971AE5DB4000F99477 /* mac@2x.png in Resources */,
+				31CE3E581AF77A2D00BA8F28 /* file_image.png in Resources */,
 				31A91A3E1AE3E7DC007D0669 /* LaunchScreen.xib in Resources */,
 				31FF46A01AE5500B0071B001 /* DeviceTableViewCell.xib in Resources */,
+				31CE3E5B1AF77A2D00BA8F28 /* file_video@2x.png in Resources */,
 				316012161AF62D4000A78ACF /* template.js in Resources */,
 				316012101AF62D4000A78ACF /* layout.css in Resources */,
 				31A91A3B1AE3E7DC007D0669 /* Images.xcassets in Resources */,
 				3107279C1AE5EF2700F99477 /* ios@2x.png in Resources */,
+				31CE3E591AF77A2D00BA8F28 /* file_image@2x.png in Resources */,
 				3107279B1AE5EF2700F99477 /* ios.png in Resources */,
 				316012141AF62D4000A78ACF /* index.js in Resources */,
 				31FB520E1AE546F5008BF24D /* download@2x.png in Resources */,
 				316012121AF62D4000A78ACF /* icon.ico in Resources */,
+				31CE3E531AF77A2D00BA8F28 /* file_archieve@2x.png in Resources */,
 				3160120F1AF62D4000A78ACF /* index.css in Resources */,
 				310727961AE5DB4000F99477 /* mac.png in Resources */,
 				31ECF0DE1AE3FB7F00BE2AE1 /* WiFly-icon.png in Resources */,
+				31CE3E551AF77A2D00BA8F28 /* file_audio@2x.png in Resources */,
 				31FB520D1AE546F5008BF24D /* download.png in Resources */,
+				31CE3E571AF77A2D00BA8F28 /* file_document@2x.png in Resources */,
+				31CE3E5C1AF77A2D00BA8F28 /* file.png in Resources */,
 				316012111AF62D4000A78ACF /* favicon.ico in Resources */,
 				316012131AF62D4000A78ACF /* index.html in Resources */,
+				31CE3E451AF767F700BA8F28 /* FileTableViewCell.xib in Resources */,
+				31CE3E5A1AF77A2D00BA8F28 /* file_video.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,6 +506,7 @@
 				31FF469F1AE5500B0071B001 /* DeviceTableViewCell.m in Sources */,
 				31D845031AE53C1100FA5AE8 /* DevicesViewController.m in Sources */,
 				31A91A301AE3E7DC007D0669 /* AppDelegate.m in Sources */,
+				31CE3E441AF767F700BA8F28 /* FileTableViewCell.m in Sources */,
 				31A91A331AE3E7DC007D0669 /* FirstViewController.m in Sources */,
 				31A91A2D1AE3E7DC007D0669 /* main.m in Sources */,
 			);
