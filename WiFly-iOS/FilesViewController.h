@@ -10,8 +10,12 @@
 
 #import "FileTableViewCell.h"
 
-@interface FilesViewController : UITableViewController
+@interface FilesViewController : UITableViewController <UIActionSheetDelegate, UIDocumentInteractionControllerDelegate>
 
 @property (strong, nonatomic) NSMutableArray *files;
+
+@property (strong, nonatomic) NSString *currentFile;
+
+@property (strong, nonatomic) UIDocumentInteractionController *dic;
 
 @end

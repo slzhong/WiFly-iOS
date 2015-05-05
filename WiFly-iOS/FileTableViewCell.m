@@ -75,15 +75,20 @@
 
 - (void)setSize:(NSString *)size {
     NSInteger num = [size integerValue];
-    NSString *text;
+    NSString *unit;
     if (num < 1000000) {
-        text = [NSString stringWithFormat:@"%ld KB", num / 1000];
+        num = num / 10;
+        unit = @"KB";
     } else if (num < 1000000000) {
-        text = [NSString stringWithFormat:@"%ld MB", num / 1000000];
+        num = num / 10000;
+        unit = @"MB";
     } else {
-        text = [NSString stringWithFormat:@"%ld GB", num / 1000000000];
+        num = num / 10000000;
+        unit = @"GB";
     }
-    self.lb_size.text = text;
+    NSInteger r = num % 100;
+    NSString *remain = r < 10 ? [NSString stringWithFormat:@"0%ld", r] : [NSString stringWithFormat:@"%ld", r];
+    self.lb_size.text = [NSString stringWithFormat:@"%ld.%@ %@", num / 100, remain, unit];
 }
 
 @end
