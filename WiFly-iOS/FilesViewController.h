@@ -14,7 +14,11 @@
 
 @property (strong, nonatomic) NSMutableArray *files;
 
+@property (strong, nonatomic) NSString *documentPath;
+
 @property (strong, nonatomic) NSString *currentFile;
+
+@property (strong, nonatomic) NSFileManager *fileManager;
 
 @property (strong, nonatomic) UIDocumentInteractionController *dic;
 

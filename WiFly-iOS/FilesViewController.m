@@ -41,18 +41,17 @@
 }
 
 - (void)initData {
-    
+    self.documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    self.fileManager = [NSFileManager defaultManager];
 }
 
 - (void)updateFiles {
     self.files = [NSMutableArray array];
-    NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-    NSFileManager *fm = [NSFileManager defaultManager];
-    NSDirectoryEnumerator *em = [fm enumeratorAtPath:documentsPath];
+    NSDirectoryEnumerator *em = [self.fileManager enumeratorAtPath:self.documentPath];
     NSString *fileName;
     while (fileName = [em nextObject] ) {
         NSMutableDictionary *file = [NSMutableDictionary dictionary];
-        NSDictionary *attributes = [fm attributesOfItemAtPath:[documentsPath stringByAppendingPathComponent:fileName] error:nil];
+        NSDictionary *attributes = [self.fileManager attributesOfItemAtPath:[self.documentPath stringByAppendingPathComponent:fileName] error:nil];
         [file setValue:fileName forKey:@"name"];
         [file setValue:[attributes valueForKey:NSFileSize] forKey:@"size"];
         [self.files addObject:file];
@@ -60,10 +59,17 @@
     [self.tableView reloadData];
 }
 
+- (void)deleteFile:(NSIndexPath *)indexPath {
+    NSString *name = [self.files[indexPath.row] valueForKey:@"name"];
+    NSString *path = [self.documentPath stringByAppendingPathComponent:name];
+    [self.fileManager removeItemAtPath:path error:nil];
+    [self.files removeObjectAtIndex:indexPath.row];
+    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+}
+
 - (void)showActionSheet:(NSInteger)index {
-    NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
     NSString *name = [self.files[index] valueForKey:@"name"];
-    self.currentFile = [documentsPath stringByAppendingPathComponent:name];
+    self.currentFile = [self.documentPath stringByAppendingPathComponent:name];
     UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:[NSString stringWithFormat:@"Select An Operation For\n%@", name] delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Send To Peer", @"Show Preview", @"Open In Other Apps", nil];
     [as showInView:self.view];
 }
@@ -113,25 +119,9 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-//        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        NSLog(@"delete");
+        [self deleteFile:indexPath];
     }
 }
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Action Sheet Delegates
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
