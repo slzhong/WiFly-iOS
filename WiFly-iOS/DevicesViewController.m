@@ -50,18 +50,27 @@
     [SVProgressHUD setBackgroundColor:[UIColor colorWithRed:78/255.0f green:208/255.0f blue:253/255.0f alpha:0.9f]];
     [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
     
+    self.pv_files.delegate = self;
+    self.pv_files.dataSource = self;
+    
     self.tv_devices.delegate = self;
     self.tv_devices.dataSource = self;
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideFiles)];
+    tapGestureRecognizer.cancelsTouchesInView = NO;
+    [self.tv_devices addGestureRecognizer:tapGestureRecognizer];
 }
 
 - (void) initData {
+    self.files = [NSMutableArray array];
     self.devices = [NSMutableArray array];
+    self.cells = [NSMutableArray array];
     self.current = 1;
     self.scanned = 0;
     self.addedIps = @"";
     self.ip = @"";
     self.ipPrefix = @"";
     self.progressDisplayed = NO;
+    self.pickerDisplayed = NO;
 }
 
 - (BOOL)checkId {
@@ -73,7 +82,6 @@
     [self dismissProgress];
     [self performSegueWithIdentifier:@"showFiles" sender:sender];
 }
-
 
 - (void)showPrompt {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"WELCOME" message:@"Enter A Name For Your Device" delegate:self cancelButtonTitle:@"DONE" otherButtonTitles:nil, nil];
@@ -181,6 +189,7 @@
         [self dismissProgress];
     }
     [self.devices addObject:device];
+    self.cells = [NSMutableArray array];
     [self.tv_devices reloadData];
 }
 
@@ -193,6 +202,7 @@
         for (NSUInteger i = 0; i < self.devices.count; i++) {
             if ([[self.devices[i] valueForKey:@"url"] isEqualToString:url]) {
                 [self.devices removeObjectAtIndex:i];
+                self.cells = [NSMutableArray array];
                 [self.tv_devices reloadData];
                 break;
             }
@@ -201,6 +211,98 @@
     [self detectDevice];
 }
 
+#pragma mark - Upload Functions
+- (void)showActionSheet {
+    UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:@"Select A Type You Want To Send" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Choose From Album", @"Choose From Received Files", nil];
+    [as showInView:self.view];
+}
+
+- (void)showImagePicker {
+    UIImagePickerController *ipc = [[UIImagePickerController alloc] init];
+    ipc.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    ipc.mediaTypes = [[NSArray alloc] initWithObjects:(NSString*)kUTTypeImage,nil];
+    ipc.delegate = self;
+    ipc.allowsEditing = NO;
+    [self presentViewController:ipc animated:YES completion:^{}];
+}
+
+- (void)showFiles {
+    if (!self.pickerDisplayed) {
+        self.pickerDisplayed = YES;
+        FileManager *fm = [FileManager sharedInstance];
+        self.files = [fm listFiles];
+        [self.pv_files reloadAllComponents];
+        [UIView beginAnimations:@"PickerViewFlyIn" context:nil];
+        [UIView setAnimationDuration:0.3];
+        self.v_container.frame = CGRectMake(0, [[UIScreen mainScreen] bounds].size.height - 200, [[UIScreen mainScreen] bounds].size.width, 200);
+        [UIView commitAnimations];
+        if (self.currentFile == nil) {
+            self.currentFile = self.files[0];
+        }
+    }
+}
+
+- (void)hideFiles {
+    if (self.pickerDisplayed) {
+        self.pickerDisplayed = NO;
+        [UIView beginAnimations:@"PickerViewFlyIn" context:nil];
+        [UIView setAnimationDuration:0.3];
+        self.v_container.frame = CGRectMake(0, [[UIScreen mainScreen] bounds].size.height, [[UIScreen mainScreen] bounds].size.width, 200);
+        [UIView commitAnimations];
+    }
+}
+
+- (IBAction)confirmFile:(id)sender {
+    [self hideFiles];
+    [self startUpload];
+}
+
+- (IBAction)cancelFile:(id)sender {
+    [self hideFiles];
+}
+
+- (void)startUpload {
+    DeviceTableViewCell *cell = self.cells[self.currentIndex.row];
+    [cell setStatus:@"sending..." type:nil];
+    FileManager *fm = [FileManager sharedInstance];
+    NSString *url = [NSString stringWithFormat:@"%@upload", [self.currentTarget valueForKey:@"url"]];
+    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:url parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        if (self.imageData != nil) {
+            NSString *name = [NSString stringWithFormat:@"IMG_%ld.jpg", (long)[[NSDate date] timeIntervalSince1970]];
+            NSString *type = @"image/jpg";
+            [formData appendPartWithFileData:self.imageData name:@"file" fileName:name mimeType:type];
+            [formData appendPartWithFormData:[name dataUsingEncoding:NSUTF8StringEncoding] name:@"name"];
+            [formData appendPartWithFormData:[type dataUsingEncoding:NSUTF8StringEncoding] name:@"type"];
+            [formData appendPartWithFormData:[[NSString stringWithFormat:@"%lu", self.imageData.length] dataUsingEncoding:NSUTF8StringEncoding] name:@"size"];
+            self.imageData = nil;
+        } else {
+            NSString *name = [self.currentFile valueForKey:@"name"];
+            NSString *path = [fm getFilePath:name];
+            [formData appendPartWithFileURL:[NSURL fileURLWithPath:path] name:@"file" fileName:name mimeType:[fm getMime:name] error:nil];
+            [formData appendPartWithFormData:[name dataUsingEncoding:NSUTF8StringEncoding] name:@"name"];
+            [formData appendPartWithFormData:[[NSString stringWithFormat:@"%@", [self.currentFile valueForKey:@"size"]] dataUsingEncoding:NSUTF8StringEncoding] name:@"size"];
+            [formData appendPartWithFormData:[[fm getMime:name] dataUsingEncoding:NSUTF8StringEncoding] name:@"type"];
+        }
+        [formData appendPartWithFormData:[[[NSUserDefaults standardUserDefaults] valueForKey:@"name"] dataUsingEncoding:NSUTF8StringEncoding] name:@"from"];
+    } error:nil];
+    
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    NSProgress *progress = nil;
+    
+    NSURLSessionUploadTask *uploadTask = [manager uploadTaskWithStreamedRequest:request progress:&progress completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+        if (error) {
+            [self showErrorWithText:@"Failed To Send"];
+            [cell setStatus:@"error" type:@"error"];
+        } else {
+            [self showSuccessWithText:@"Transfer Succeeded"];
+            [cell setStatus:@"√" type:@"success"];
+        }
+    }];
+    
+    [uploadTask resume];
+}
+
+#pragma mark - SVProgressHUD
 - (void)showSuccessWithText:(NSString *)text {
     [SVProgressHUD showSuccessWithStatus:text maskType:SVProgressHUDMaskTypeNone];
 }
@@ -227,6 +329,41 @@
     }
 }
 
+#pragma mark - Action Sheet Delegates
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {
+        [self showImagePicker];
+    } else if (buttonIndex == 1) {
+        [self showFiles];
+    }
+}
+
+#pragma mark - Picker View Delegates
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return self.files.count;
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return [self.files[row] valueForKey:@"name"];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    self.currentFile = self.files[row];
+}
+
+#pragma mark - Image Picker Delegates
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [picker dismissViewControllerAnimated:YES completion:^{}];
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    self.imageData = UIImageJPEGRepresentation(image, 1);
+    [self startUpload];
+}
+
+#pragma mark - Table View Delegates
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.devices.count;
 }
@@ -239,11 +376,16 @@
     NSMutableDictionary *device = [self.devices objectAtIndex:indexPath.row];
     NSString *ip = [[device valueForKey:@"url"] substringWithRange:NSMakeRange(7, [[device valueForKey:@"url"] rangeOfString:@":12580"].location - 7)];
     [cell setViews:[NSString stringWithFormat:@"%@.png", [device valueForKey:@"type"]] name:[device valueForKey:@"name"] ip:ip];
+    [self.cells addObject:cell];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"%@", indexPath);
+    self.currentIndex = indexPath;
+    self.currentTarget = self.devices[indexPath.row];
+    [self.tv_devices deselectRowAtIndexPath:indexPath animated:YES];
+    [self hideFiles];
+    [self showActionSheet];
 }
 /*
 #pragma mark - Navigation

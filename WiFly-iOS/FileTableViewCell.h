@@ -14,6 +14,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *lb_name;
 @property (strong, nonatomic) IBOutlet UILabel *lb_size;
 
+
+
 - (void)setViews:(NSString *)name size:(NSString *)size;
 - (void)setIcon:(NSString *)name;
 - (void)setName:(NSString *)name;

@@ -82,13 +82,66 @@
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DhO-hM-LJx">
+                                <rect key="frame" x="0.0" y="568" width="320" height="200"/>
+                                <subviews>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Ew-Eg-raW">
+                                        <rect key="frame" x="0.0" y="38" width="320" height="162"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="162" id="iq6-6h-rFI"/>
+                                        </constraints>
+                                    </pickerView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLx-51-HS9">
+                                        <rect key="frame" x="8" y="0.0" width="148" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="148" id="bWH-QQ-r7G"/>
+                                        </constraints>
+                                        <state key="normal" title="Confirm">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="confirmFile:" destination="iyJ-H1-pd0" eventType="touchUpInside" id="ivL-aH-vUN"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aaQ-Xt-pV9">
+                                        <rect key="frame" x="164" y="0.0" width="148" height="30"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelFile:" destination="iyJ-H1-pd0" eventType="touchUpInside" id="afz-a0-9C6"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="654-fo-r3B"/>
+                                    <constraint firstItem="dLx-51-HS9" firstAttribute="top" secondItem="DhO-hM-LJx" secondAttribute="top" id="KTr-0g-Vha"/>
+                                    <constraint firstItem="aaQ-Xt-pV9" firstAttribute="leading" secondItem="dLx-51-HS9" secondAttribute="trailing" constant="8" symbolic="YES" id="R6Y-AZ-Pj7"/>
+                                    <constraint firstItem="0Ew-Eg-raW" firstAttribute="top" secondItem="dLx-51-HS9" secondAttribute="bottom" constant="8" symbolic="YES" id="UIU-4O-72U"/>
+                                    <constraint firstItem="dLx-51-HS9" firstAttribute="baseline" secondItem="aaQ-Xt-pV9" secondAttribute="baseline" id="eGs-Cz-JAN"/>
+                                    <constraint firstAttribute="trailing" secondItem="aaQ-Xt-pV9" secondAttribute="trailing" constant="8" id="fGV-bw-lxw"/>
+                                    <constraint firstItem="0Ew-Eg-raW" firstAttribute="leading" secondItem="DhO-hM-LJx" secondAttribute="leading" id="guh-yu-yg1"/>
+                                    <constraint firstItem="dLx-51-HS9" firstAttribute="leading" secondItem="DhO-hM-LJx" secondAttribute="leading" constant="8" id="hC2-tR-yqo"/>
+                                    <constraint firstItem="0Ew-Eg-raW" firstAttribute="top" secondItem="dLx-51-HS9" secondAttribute="bottom" constant="8" symbolic="YES" id="hwC-iv-nsf"/>
+                                    <constraint firstItem="aaQ-Xt-pV9" firstAttribute="leading" secondItem="DhO-hM-LJx" secondAttribute="leading" constant="164" id="rA6-px-Dgx"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="hwC-iv-nsf"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="DjK-Bn-ugR" secondAttribute="trailing" id="C3T-Lv-ONz"/>
                             <constraint firstItem="DjK-Bn-ugR" firstAttribute="top" secondItem="Qdb-U8-1dA" secondAttribute="bottom" constant="-64" id="KQW-b5-fqP"/>
+                            <constraint firstItem="DjK-Bn-ugR" firstAttribute="bottom" secondItem="DhO-hM-LJx" secondAttribute="bottom" constant="-200" id="PhM-xX-eOV"/>
                             <constraint firstItem="DjK-Bn-ugR" firstAttribute="bottom" secondItem="L8d-wn-uo0" secondAttribute="top" id="U0d-Cu-nnU"/>
-                            <constraint firstItem="DjK-Bn-ugR" firstAttribute="leading" secondItem="56z-RS-LOq" secondAttribute="leading" id="aiX-Eg-Ydl"/>
-                            <constraint firstAttribute="trailing" secondItem="DjK-Bn-ugR" secondAttribute="trailing" id="dUs-Js-L3p"/>
+                            <constraint firstItem="DjK-Bn-ugR" firstAttribute="leading" secondItem="DhO-hM-LJx" secondAttribute="leading" id="kmf-N9-1Pu"/>
+                            <constraint firstItem="DjK-Bn-ugR" firstAttribute="leading" secondItem="56z-RS-LOq" secondAttribute="leading" id="kuf-r1-I4z"/>
+                            <constraint firstItem="DjK-Bn-ugR" firstAttribute="trailing" secondItem="DhO-hM-LJx" secondAttribute="trailing" id="tSk-Wg-x76"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="WiFly" id="1P4-cH-UJj">
@@ -109,7 +162,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="pv_files" destination="0Ew-Eg-raW" id="HRD-PQ-IPb"/>
                         <outlet property="tv_devices" destination="DjK-Bn-ugR" id="50l-ZL-TTF"/>
+                        <outlet property="v_container" destination="DhO-hM-LJx" id="luY-t3-Qf5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tx0-Ef-Q1l" userLabel="First Responder" sceneMemberID="firstResponder"/>

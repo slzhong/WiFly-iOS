@@ -46,16 +46,8 @@
 }
 
 - (void)updateFiles {
-    self.files = [NSMutableArray array];
-    NSDirectoryEnumerator *em = [self.fileManager enumeratorAtPath:self.documentPath];
-    NSString *fileName;
-    while (fileName = [em nextObject] ) {
-        NSMutableDictionary *file = [NSMutableDictionary dictionary];
-        NSDictionary *attributes = [self.fileManager attributesOfItemAtPath:[self.documentPath stringByAppendingPathComponent:fileName] error:nil];
-        [file setValue:fileName forKey:@"name"];
-        [file setValue:[attributes valueForKey:NSFileSize] forKey:@"size"];
-        [self.files addObject:file];
-    }
+    FileManager *fm = [FileManager sharedInstance];
+    self.files = [fm listFiles];
     [self.tableView reloadData];
 }
 

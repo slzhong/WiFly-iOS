@@ -38,4 +38,15 @@
     self.lb_ip.text = ip;
 }
 
+- (void)setStatus:(NSString *)text type:(NSString *)type {
+    if (type == nil || [type isEqualToString:@"normal"]) {
+        self.lb_status.textColor = [UIColor lightGrayColor];
+    } else if ([type isEqualToString:@"error"]) {
+        self.lb_status.textColor = [UIColor redColor];
+    } else if ([type isEqualToString:@"success"]) {
+        self.lb_status.textColor = [UIColor greenColor];
+    }
+    self.lb_status.text = text;
+}
+
 @end

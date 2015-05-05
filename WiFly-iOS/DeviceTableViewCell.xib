@@ -29,12 +29,19 @@
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GE2-up-tbN">
+                        <rect key="frame" x="84" y="40" width="70" height="21"/>
+                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="13"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="iv_icon" destination="Z8V-me-duf" id="9CU-Xs-uZf"/>
                 <outlet property="lb_ip" destination="A8i-rw-xoa" id="HDt-bF-gcs"/>
                 <outlet property="lb_name" destination="e8u-s2-Vkb" id="3mr-uI-mmr"/>
+                <outlet property="lb_status" destination="GE2-up-tbN" id="pDA-w9-JMf"/>
             </connections>
             <point key="canvasLocation" x="245" y="296"/>
         </tableViewCell>

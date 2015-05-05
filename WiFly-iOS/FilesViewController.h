@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "FileTableViewCell.h"
+#import "FileManager.h"
 
 @interface FilesViewController : UITableViewController <UIActionSheetDelegate, UIDocumentInteractionControllerDelegate>
 
