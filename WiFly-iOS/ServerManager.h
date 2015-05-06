@@ -8,12 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+#import "ViewManager.h"
+
 #import "GCDWebServer.h"
 #import "GCDWebUploader.h"
 #import "GCDWebServerDataResponse.h"
 #import "GCDWebServerMultiPartFormRequest.h"
 
-@interface ServerManager : NSObject
+@interface ServerManager : NSObject <GCDWebUploaderDelegate>
 
 @property (strong, nonatomic) GCDWebServer *server;
 @property (strong, nonatomic) GCDWebUploader *transmitter;

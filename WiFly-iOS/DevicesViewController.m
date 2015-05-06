@@ -18,6 +18,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    ViewManager *vm = [ViewManager sharedInstance];
+    [vm setDevicesViewController:self];
+    
     [self initData];
     [self initViews];
     
@@ -178,7 +181,7 @@
 }
 
 - (void)checkDevice:(NSDictionary *)device {
-    if (![self.addedIps containsString:[device valueForKey:@"url"]]) {
+    if ([self.addedIps rangeOfString:[device valueForKey:@"url"]].location > self.addedIps.length) {
         self.addedIps = [NSString stringWithFormat:@"%@,%@", self.addedIps, [device valueForKey:@"url"]];
         [self addDevice:device];
     }
@@ -195,7 +198,7 @@
 
 - (void)removeDevice:(NSString *)ip {
     NSString *url = [NSString stringWithFormat:@"http://%@:12580/", ip];
-    if ([self.addedIps containsString:url]) {
+    if ([self.addedIps rangeOfString:url].location < self.addedIps.length) {
         NSMutableString *tmp = [[NSMutableString alloc] initWithString:self.addedIps];
         [tmp deleteCharactersInRange:[tmp rangeOfString:url]];
         self.addedIps = tmp;
@@ -266,23 +269,29 @@
     [cell setStatus:@"sending..." type:nil];
     FileManager *fm = [FileManager sharedInstance];
     NSString *url = [NSString stringWithFormat:@"%@upload", [self.currentTarget valueForKey:@"url"]];
+    NSString *formName = @"file";
+    if ([[self.currentTarget valueForKey:@"type"] isEqualToString:@"ios"]) {
+        url = [NSString stringWithFormat:@"%@/upload", [url substringToIndex:url.length - 13]];
+        formName = @"files[]";
+    }
     NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:url parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         if (self.imageData != nil) {
             NSString *name = [NSString stringWithFormat:@"IMG_%ld.jpg", (long)[[NSDate date] timeIntervalSince1970]];
             NSString *type = @"image/jpg";
-            [formData appendPartWithFileData:self.imageData name:@"file" fileName:name mimeType:type];
+            [formData appendPartWithFileData:self.imageData name:formName fileName:name mimeType:type];
             [formData appendPartWithFormData:[name dataUsingEncoding:NSUTF8StringEncoding] name:@"name"];
             [formData appendPartWithFormData:[type dataUsingEncoding:NSUTF8StringEncoding] name:@"type"];
-            [formData appendPartWithFormData:[[NSString stringWithFormat:@"%lu", self.imageData.length] dataUsingEncoding:NSUTF8StringEncoding] name:@"size"];
+            [formData appendPartWithFormData:[[NSString stringWithFormat:@"%lu", (unsigned long)self.imageData.length] dataUsingEncoding:NSUTF8StringEncoding] name:@"size"];
             self.imageData = nil;
         } else {
             NSString *name = [self.currentFile valueForKey:@"name"];
             NSString *path = [fm getFilePath:name];
-            [formData appendPartWithFileURL:[NSURL fileURLWithPath:path] name:@"file" fileName:name mimeType:[fm getMime:name] error:nil];
+            [formData appendPartWithFileURL:[NSURL fileURLWithPath:path] name:formName fileName:name mimeType:[fm getMime:name] error:nil];
             [formData appendPartWithFormData:[name dataUsingEncoding:NSUTF8StringEncoding] name:@"name"];
             [formData appendPartWithFormData:[[NSString stringWithFormat:@"%@", [self.currentFile valueForKey:@"size"]] dataUsingEncoding:NSUTF8StringEncoding] name:@"size"];
             [formData appendPartWithFormData:[[fm getMime:name] dataUsingEncoding:NSUTF8StringEncoding] name:@"type"];
         }
+        [formData appendPartWithFormData:[[NSString stringWithFormat:@"/"] dataUsingEncoding:NSUTF8StringEncoding] name:@"path"];
         [formData appendPartWithFormData:[[[NSUserDefaults standardUserDefaults] valueForKey:@"name"] dataUsingEncoding:NSUTF8StringEncoding] name:@"from"];
     } error:nil];
     
@@ -290,7 +299,7 @@
     NSProgress *progress = nil;
     
     NSURLSessionUploadTask *uploadTask = [manager uploadTaskWithStreamedRequest:request progress:&progress completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-        if (error) {
+        if (error && ![[error localizedDescription] isEqualToString:@"Request failed: unacceptable content-type: text/plain"]) {
             [self showErrorWithText:@"Failed To Send"];
             [cell setStatus:@"error" type:@"error"];
         } else {
@@ -387,14 +396,5 @@
     [self hideFiles];
     [self showActionSheet];
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

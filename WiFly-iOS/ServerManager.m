@@ -47,8 +47,17 @@ static ServerManager *serverManager = nil;
 - (void)startTransmitter {
     NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
     self.transmitter = [[GCDWebUploader alloc] initWithUploadDirectory:documentsPath];
+    self.transmitter.delegate = self;
     [self.transmitter start];
     NSLog(@"%@", self.transmitter.serverURL);
+}
+
+#pragma mark - GCD Web Uploader Delegate
+- (void)webUploader:(GCDWebUploader *)uploader didUploadFileAtPath:(NSString *)path {
+    ViewManager *vm = [ViewManager sharedInstance];
+    if (vm.filesViewController != nil) {
+        [vm.filesViewController updateFiles];
+    }
 }
 
 @end

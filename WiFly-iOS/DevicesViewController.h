@@ -15,9 +15,10 @@
 
 #import "ServerManager.h"
 #import "FileManager.h"
+#import "ViewManager.h"
 #import "DeviceTableViewCell.h"
 
-@interface DevicesViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface DevicesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tv_devices;
 @property (strong, nonatomic) IBOutlet UIView *v_container;

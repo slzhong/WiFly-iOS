@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 
 #import "FileTableViewCell.h"
+
 #import "FileManager.h"
+#import "ViewManager.h"
 
 @interface FilesViewController : UITableViewController <UIActionSheetDelegate, UIDocumentInteractionControllerDelegate>
 
@@ -22,5 +24,7 @@
 @property (strong, nonatomic) NSFileManager *fileManager;
 
 @property (strong, nonatomic) UIDocumentInteractionController *dic;
+
+- (void)updateFiles;
 
 @end

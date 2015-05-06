@@ -61,6 +61,7 @@
     } else if ([name hasSuffix:@".zip"] ||
                [name hasSuffix:@".rar"] ||
                [name hasSuffix:@".tar"] ||
+               
                [name hasSuffix:@".gz"] ||
                [name hasSuffix:@".7z"]) {
         self.iv_type.image = [UIImage imageNamed:@"file_archieve.png"];
@@ -87,7 +88,7 @@
         unit = @"GB";
     }
     NSInteger r = num % 100;
-    NSString *remain = r < 10 ? [NSString stringWithFormat:@"0%ld", r] : [NSString stringWithFormat:@"%ld", r];
+    NSString *remain = r < 10 ? [NSString stringWithFormat:@"0%ld", (long)r] : [NSString stringWithFormat:@"%ld", (long)r];
     self.lb_size.text = [NSString stringWithFormat:@"%ld.%@ %@", num / 100, remain, unit];
 }
 

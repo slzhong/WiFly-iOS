@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		310579921AF9B83500ED50CD /* ViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 310579911AF9B83500ED50CD /* ViewManager.m */; };
 		3105F8DA1AF8B25300808BA1 /* FileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3105F8D91AF8B25300808BA1 /* FileManager.m */; };
 		310727961AE5DB4000F99477 /* mac.png in Resources */ = {isa = PBXBuildFile; fileRef = 310727941AE5DB4000F99477 /* mac.png */; };
 		310727971AE5DB4000F99477 /* mac@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 310727951AE5DB4000F99477 /* mac@2x.png */; };
@@ -65,6 +66,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		310579901AF9B83500ED50CD /* ViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewManager.h; sourceTree = "<group>"; };
+		310579911AF9B83500ED50CD /* ViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewManager.m; sourceTree = "<group>"; };
 		3105F8D81AF8B25300808BA1 /* FileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileManager.h; sourceTree = "<group>"; };
 		3105F8D91AF8B25300808BA1 /* FileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileManager.m; sourceTree = "<group>"; };
 		310727941AE5DB4000F99477 /* mac.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mac.png; sourceTree = "<group>"; };
@@ -328,6 +331,8 @@
 				31ECF0D81AE3ED1E00BE2AE1 /* ServerManager.m */,
 				3105F8D81AF8B25300808BA1 /* FileManager.h */,
 				3105F8D91AF8B25300808BA1 /* FileManager.m */,
+				310579901AF9B83500ED50CD /* ViewManager.h */,
+				310579911AF9B83500ED50CD /* ViewManager.m */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -511,6 +516,7 @@
 				3105F8DA1AF8B25300808BA1 /* FileManager.m in Sources */,
 				31FF469F1AE5500B0071B001 /* DeviceTableViewCell.m in Sources */,
 				31D845031AE53C1100FA5AE8 /* DevicesViewController.m in Sources */,
+				310579921AF9B83500ED50CD /* ViewManager.m in Sources */,
 				31A91A301AE3E7DC007D0669 /* AppDelegate.m in Sources */,
 				31CE3E441AF767F700BA8F28 /* FileTableViewCell.m in Sources */,
 				31A91A331AE3E7DC007D0669 /* FirstViewController.m in Sources */,

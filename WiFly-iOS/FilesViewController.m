@@ -23,6 +23,9 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    ViewManager *vm = [ViewManager sharedInstance];
+    [vm setFilesViewController:self];
+    
     [self initViews];
     [self initData];
 }
