@@ -24,7 +24,9 @@
     [self initData];
     [self initViews];
     
-    if ([self checkId]) {
+    if ([self getSsid].length <= 0) {
+        [self showErrorWithText:@"WiFi Not In Range\nMake Sure WiFi Is Turned On"];
+    } else if ([self checkId]) {
         [self startServer];
         [self startTransmitter];
     } else {
@@ -33,7 +35,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    if ([self checkId]) {
+    if ([self getSsid].length > 0 && [self checkId]) {
         self.progressShouldDisplay = YES;
         [self detectDevice];
     }
