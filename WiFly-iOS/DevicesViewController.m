@@ -269,6 +269,7 @@
 - (void)startUpload {
     DeviceTableViewCell *cell = self.cells[self.currentIndex.row];
     [cell setStatus:@"sending..." type:nil];
+    [cell showProgress];
     FileManager *fm = [FileManager sharedInstance];
     NSString *url = [NSString stringWithFormat:@"%@upload", [self.currentTarget valueForKey:@"url"]];
     NSString *formName = @"file";
@@ -298,9 +299,10 @@
     } error:nil];
     
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-    NSProgress *progress = nil;
     
+    NSProgress *progress;
     NSURLSessionUploadTask *uploadTask = [manager uploadTaskWithStreamedRequest:request progress:&progress completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+        [cell hideProgress];
         if (error && ![[error localizedDescription] isEqualToString:@"Request failed: unacceptable content-type: text/plain"]) {
             [self showErrorWithText:@"Failed To Send"];
             [cell setStatus:@"error" type:@"error"];
@@ -309,6 +311,7 @@
             [cell setStatus:@"√" type:@"success"];
         }
     }];
+    [progress addObserver:self forKeyPath:@"fractionCompleted" options:NSKeyValueObservingOptionNew context:nil];
     
     [uploadTask resume];
 }
@@ -397,6 +400,18 @@
     [self.tv_devices deselectRowAtIndexPath:indexPath animated:YES];
     [self hideFiles];
     [self showActionSheet];
+}
+
+#pragma mark - oberver for progress
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    
+    if ([keyPath isEqualToString:@"fractionCompleted"] && [object isKindOfClass:[NSProgress class]]) {
+        NSProgress *progress = (NSProgress *)object;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            DeviceTableViewCell *cell = self.cells[self.currentIndex.row];
+            [cell updateProgress:progress.fractionCompleted];
+        });
+    }
 }
 
 @end

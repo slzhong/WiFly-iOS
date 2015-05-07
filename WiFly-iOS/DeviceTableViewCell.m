@@ -24,6 +24,7 @@
     [self setIcon:icon];
     [self setName:name];
     [self setIp:ip];
+    [self hideProgress];
 }
 
 - (void)setIcon:(NSString *)icon {
@@ -47,6 +48,24 @@
         self.lb_status.textColor = [UIColor greenColor];
     }
     self.lb_status.text = text;
+}
+
+- (void)showProgress {
+    self.pv_progress.hidden = NO;
+    self.lb_progress.hidden = NO;
+}
+
+- (void)hideProgress {
+    self.lb_progress.hidden = YES;
+    self.pv_progress.hidden = YES;
+    self.pv_progress.progress = 0;
+    self.lb_progress.text = @"";
+}
+
+- (void)updateProgress:(float)progress {
+    int progressInt = (int)(progress * 100);
+    self.lb_progress.text = [NSString stringWithFormat:@"%d%%", progressInt];
+    [self.pv_progress setProgress:progress animated:YES];
 }
 
 @end
