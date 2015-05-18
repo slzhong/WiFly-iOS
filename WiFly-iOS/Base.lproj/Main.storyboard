@@ -51,7 +51,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8sO-gW-tIq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.19215686274509802" green="0.78431372549019607" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.015686274509803921" green="0.87058823529411766" blue="0.44313725490196076" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -65,7 +65,7 @@
             </objects>
             <point key="canvasLocation" x="-1252" y="-1022"/>
         </scene>
-        <!--WiFly-->
+        <!--Firefly-->
         <scene sceneID="UVX-jK-F2V">
             <objects>
                 <viewController id="iyJ-H1-pd0" customClass="DevicesViewController" sceneMemberID="viewController">
@@ -144,7 +144,7 @@
                             <constraint firstItem="DjK-Bn-ugR" firstAttribute="trailing" secondItem="DhO-hM-LJx" secondAttribute="trailing" id="tSk-Wg-x76"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="WiFly" id="1P4-cH-UJj">
+                    <navigationItem key="navigationItem" title="Firefly" id="1P4-cH-UJj">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="8Hx-xa-li8">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="iHZ-OQ-uIX">
                                 <rect key="frame" x="233" y="7" width="25" height="25"/>

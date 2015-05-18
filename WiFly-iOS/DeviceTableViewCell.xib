@@ -36,10 +36,11 @@
                     </label>
                     <progressView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="A3H-Gg-bnv">
                         <rect key="frame" x="162" y="50" width="107" height="2"/>
+                        <color key="tintColor" red="0.015686274510000001" green="0.87058823529999996" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="107" id="cYj-kP-zFA"/>
                         </constraints>
-                        <color key="progressTintColor" red="0.19215686269999999" green="0.7843137255" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="progressTintColor" red="0.015686274510000001" green="0.87058823529999996" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="trackTintColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </progressView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhQ-xk-0vw">

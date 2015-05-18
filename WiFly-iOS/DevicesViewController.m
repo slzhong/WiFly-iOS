@@ -52,7 +52,7 @@
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = item;
     
-    [SVProgressHUD setBackgroundColor:[UIColor colorWithRed:78/255.0f green:208/255.0f blue:253/255.0f alpha:0.9f]];
+    [SVProgressHUD setBackgroundColor:[UIColor colorWithRed:4/255.0f green:222/255.0f blue:113/255.0f alpha:0.9f]];
     [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
     
     self.pv_files.delegate = self;
