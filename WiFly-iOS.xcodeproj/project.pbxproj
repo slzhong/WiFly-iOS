@@ -13,6 +13,8 @@
 		310727971AE5DB4000F99477 /* mac@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 310727951AE5DB4000F99477 /* mac@2x.png */; };
 		3107279B1AE5EF2700F99477 /* ios.png in Resources */ = {isa = PBXBuildFile; fileRef = 310727991AE5EF2700F99477 /* ios.png */; };
 		3107279C1AE5EF2700F99477 /* ios@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3107279A1AE5EF2700F99477 /* ios@2x.png */; };
+		310FCFE81B0B50A1001DD1EA /* android.png in Resources */ = {isa = PBXBuildFile; fileRef = 310FCFE61B0B50A1001DD1EA /* android.png */; };
+		310FCFE91B0B50A1001DD1EA /* android@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 310FCFE71B0B50A1001DD1EA /* android@2x.png */; };
 		3160120F1AF62D4000A78ACF /* index.css in Resources */ = {isa = PBXBuildFile; fileRef = 316012051AF62D4000A78ACF /* index.css */; };
 		316012101AF62D4000A78ACF /* layout.css in Resources */ = {isa = PBXBuildFile; fileRef = 316012061AF62D4000A78ACF /* layout.css */; };
 		316012111AF62D4000A78ACF /* favicon.ico in Resources */ = {isa = PBXBuildFile; fileRef = 316012081AF62D4000A78ACF /* favicon.ico */; };
@@ -75,6 +77,8 @@
 		310727951AE5DB4000F99477 /* mac@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mac@2x.png"; sourceTree = "<group>"; };
 		310727991AE5EF2700F99477 /* ios.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ios.png; sourceTree = "<group>"; };
 		3107279A1AE5EF2700F99477 /* ios@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios@2x.png"; sourceTree = "<group>"; };
+		310FCFE61B0B50A1001DD1EA /* android.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = android.png; sourceTree = "<group>"; };
+		310FCFE71B0B50A1001DD1EA /* android@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "android@2x.png"; sourceTree = "<group>"; };
 		316012051AF62D4000A78ACF /* index.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = index.css; sourceTree = "<group>"; };
 		316012061AF62D4000A78ACF /* layout.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = layout.css; sourceTree = "<group>"; };
 		316012081AF62D4000A78ACF /* favicon.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = favicon.ico; sourceTree = "<group>"; };
@@ -278,6 +282,8 @@
 		31ECF0DA1AE3FB6C00BE2AE1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				310FCFE61B0B50A1001DD1EA /* android.png */,
+				310FCFE71B0B50A1001DD1EA /* android@2x.png */,
 				31BCD0D71B0994FD00633E17 /* icon-transparent.png */,
 				31CE3E461AF77A2D00BA8F28 /* file_archieve.png */,
 				31CE3E471AF77A2D00BA8F28 /* file_archieve@2x.png */,
@@ -433,6 +439,7 @@
 				31A91A391AE3E7DC007D0669 /* Main.storyboard in Resources */,
 				31CE3E5D1AF77A2D00BA8F28 /* file@2x.png in Resources */,
 				31ECF0DD1AE3FB7F00BE2AE1 /* WiFly-icon-transparent.png in Resources */,
+				310FCFE81B0B50A1001DD1EA /* android.png in Resources */,
 				31CE3E561AF77A2D00BA8F28 /* file_document.png in Resources */,
 				31CE3E541AF77A2D00BA8F28 /* file_audio.png in Resources */,
 				31CE3E521AF77A2D00BA8F28 /* file_archieve.png in Resources */,
@@ -453,6 +460,7 @@
 				316012121AF62D4000A78ACF /* icon.ico in Resources */,
 				31CE3E531AF77A2D00BA8F28 /* file_archieve@2x.png in Resources */,
 				3160120F1AF62D4000A78ACF /* index.css in Resources */,
+				310FCFE91B0B50A1001DD1EA /* android@2x.png in Resources */,
 				310727961AE5DB4000F99477 /* mac.png in Resources */,
 				31ECF0DE1AE3FB7F00BE2AE1 /* WiFly-icon.png in Resources */,
 				31CE3E551AF77A2D00BA8F28 /* file_audio@2x.png in Resources */,
