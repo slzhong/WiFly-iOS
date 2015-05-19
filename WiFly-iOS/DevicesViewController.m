@@ -150,6 +150,7 @@
 }
 
 - (void)searchDevice {
+    self.scanned = 0;
     [self detectDevice];
     for (int i = 0; i < 10; i++) {
         [self searchIp:[NSString stringWithFormat:@"%@%d", self.ipPrefix, self.current + i]];
@@ -190,10 +191,7 @@
 }
 
 - (void)searchNext {
-    if (++self.scanned < 10) {
-        return;
-    } else {
-        self.scanned = 0;
+    if (++self.scanned >= 10) {
         self.current = (self.current > 250) ? 1 : self.current + 10;
         [self searchDevice];
     }
