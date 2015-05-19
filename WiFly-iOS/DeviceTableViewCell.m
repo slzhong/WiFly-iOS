@@ -45,7 +45,7 @@
     } else if ([type isEqualToString:@"error"]) {
         self.lb_status.textColor = [UIColor redColor];
     } else if ([type isEqualToString:@"success"]) {
-        self.lb_status.textColor = [UIColor greenColor];
+        self.lb_status.textColor = [UIColor colorWithRed:230/255.0f green:255/255.0f blue:0/255.0f alpha:1.0f];
     }
     self.lb_status.text = text;
 }
