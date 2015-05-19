@@ -18,7 +18,7 @@
 #import "ViewManager.h"
 #import "DeviceTableViewCell.h"
 
-@interface DevicesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface DevicesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tv_devices;
 @property (strong, nonatomic) IBOutlet UIView *v_container;
@@ -37,6 +37,7 @@
 
 @property int scanned;
 @property int current;
+@property int alertViewId; // 0: prompt, 1: message
 
 @property BOOL progressDisplayed;
 @property BOOL progressShouldDisplay;

@@ -14,8 +14,9 @@
 #import "GCDWebUploader.h"
 #import "GCDWebServerDataResponse.h"
 #import "GCDWebServerMultiPartFormRequest.h"
+#import "AFHTTPRequestOperationManager.h"
 
-@interface ServerManager : NSObject <GCDWebUploaderDelegate>
+@interface ServerManager : NSObject <GCDWebUploaderDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) GCDWebServer *server;
 @property (strong, nonatomic) GCDWebUploader *transmitter;
@@ -27,7 +28,7 @@
 
 - (void)start;
 - (void)setInfo:(NSString *)n url:(NSString *)u;
-
 - (void)startTransmitter;
+- (void)sendChat:(NSString *)url content:(NSString *)content;
 
 @end

@@ -34,6 +34,11 @@
     [self updateFiles];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    ViewManager *vm = [ViewManager sharedInstance];
+    [vm setCurrentViewController:@"files"];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

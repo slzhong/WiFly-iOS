@@ -35,6 +35,9 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    ViewManager *vm = [ViewManager sharedInstance];
+    [vm setCurrentViewController:@"devices"];
+    
     if ([self getSsid].length > 0 && [self checkId]) {
         self.progressShouldDisplay = YES;
         [self detectDevice];
@@ -89,15 +92,29 @@
 }
 
 - (void)showPrompt {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"WELCOME" message:@"Enter A Name For Your Device" delegate:self cancelButtonTitle:@"DONE" otherButtonTitles:nil, nil];
+    self.alertViewId = 0;
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"WELCOME" message:@"Enter A Name For Your Device" delegate:self cancelButtonTitle:@"Done" otherButtonTitles:nil, nil];
+    alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [alertView show];
+}
+
+- (void)showMessage {
+    self.alertViewId = 1;
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"MESSAGE" message:[NSString stringWithFormat:@"Enter Message For %@", [self.currentTarget valueForKey:@"name"]] delegate:self cancelButtonTitle:@"Discard" otherButtonTitles:@"Send", nil];
     alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
     [alertView show];
 }
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    UITextField *tf = [alertView textFieldAtIndex:0];
-    [[NSUserDefaults standardUserDefaults] setValue:tf.text forKey:@"name"];
-    [self startServer];
+    if (self.alertViewId == 0) {
+        UITextField *tf = [alertView textFieldAtIndex:0];
+        [[NSUserDefaults standardUserDefaults] setValue:tf.text forKey:@"name"];
+        [self startServer];
+    } else if (self.alertViewId == 1) {
+        UITextField *tf = [alertView textFieldAtIndex:0];
+        ServerManager *sm = [ServerManager sharedInstance];
+        [sm sendChat:[NSString stringWithFormat:@"%@chat", [self.currentTarget valueForKey:@"url"]] content:tf.text];
+    }
 }
 
 - (NSString *)getSsid {
@@ -218,7 +235,7 @@
 
 #pragma mark - Upload Functions
 - (void)showActionSheet {
-    UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:@"Select A Type You Want To Send" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Choose From Album", @"Choose From Received Files", nil];
+    UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:@"Select A Type You Want To Send" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Choose From Album", @"Choose From Received Files", @"Text Message", nil];
     [as showInView:self.view];
 }
 
@@ -349,6 +366,8 @@
         [self showImagePicker];
     } else if (buttonIndex == 1) {
         [self showFiles];
+    } else if (buttonIndex == 2) {
+        [self showMessage];
     }
 }
 
@@ -402,7 +421,7 @@
     [self showActionSheet];
 }
 
-#pragma mark - oberver for progress
+#pragma mark - Oberver For Progress
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     
     if ([keyPath isEqualToString:@"fractionCompleted"] && [object isKindOfClass:[NSProgress class]]) {
