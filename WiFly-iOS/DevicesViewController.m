@@ -100,7 +100,7 @@
 
 - (void)showMessage {
     self.alertViewId = 1;
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"MESSAGE" message:[NSString stringWithFormat:@"Enter Message For %@", [self.currentTarget valueForKey:@"name"]] delegate:self cancelButtonTitle:@"Discard" otherButtonTitles:@"Send", nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"MESSAGE" message:[NSString stringWithFormat:@"Enter Message For %@:", [self.currentTarget valueForKey:@"name"]] delegate:self cancelButtonTitle:@"Discard" otherButtonTitles:@"Send", nil];
     alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
     [alertView show];
 }
