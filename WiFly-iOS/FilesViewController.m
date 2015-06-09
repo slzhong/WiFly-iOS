@@ -86,6 +86,10 @@
     [self.dic presentOpenInMenuFromRect:CGRectZero inView:self.view animated:YES];
 }
 
+- (void)showPeers {
+    
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -126,7 +130,7 @@
 #pragma mark - Action Sheet Delegates
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0) {
-        
+        [self showPeers];
     } else if (buttonIndex == 1) {
         [self showCurrentFile];
     } else if (buttonIndex == 2) {

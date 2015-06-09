@@ -61,7 +61,6 @@
     } else if ([name hasSuffix:@".zip"] ||
                [name hasSuffix:@".rar"] ||
                [name hasSuffix:@".tar"] ||
-               
                [name hasSuffix:@".gz"] ||
                [name hasSuffix:@".7z"]) {
         self.iv_type.image = [UIImage imageNamed:@"file_archieve.png"];
